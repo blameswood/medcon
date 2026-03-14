@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学术会议管理平台 - v1.5 增强版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .sidebar-active { bg-blue-700 text-white shadow-lg; }
+        .tab-active { border-b-2 border-blue-600 text-blue-600; }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans">
+    <div class="bg-indigo-900 text-white text-[10px] py-1 px-4 flex justify-between sticky top-0 z-[100]">
+        <span><i class="fas fa-microchip mr-1"></i> 当前版本: v1.5 (Academic Core)</span>
+        <div class="flex gap-3">
+            <button onclick="switchView('admin')" id="btn-admin" class="bg-blue-600 px-2 rounded">B端管理</button>
+            <button onclick="switchView('client')" id="btn-client" class="bg-slate-700 px-2 rounded">C端展示</button>
+        </div>
+    </div>
+    <div id="admin-view"></div>
+    <div id="client-view" class="hidden"></div>
+    <script src="admin.js"></script>
+    <script src="client.js"></script>
+    <script>
+        function switchView(view) {
+            document.getElementById('admin-view').classList.toggle('hidden', view !== 'admin');
+            document.getElementById('client-view').classList.toggle('hidden', view !== 'client');
+            document.getElementById('btn-admin').className = view === 'admin' ? 'bg-blue-600 px-2 rounded' : 'bg-slate-700 px-2 rounded';
+            document.getElementById('btn-client').className = view === 'client' ? 'bg-blue-600 px-2 rounded' : 'bg-slate-700 px-2 rounded';
+        }
+        window.onload = () => { renderAdmin(); renderClient(); };
+    </script>
+</body>
+</html>

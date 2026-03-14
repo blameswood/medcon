@@ -1,0 +1,6 @@
+
+:root { --primary: #1e40af; --secondary: #64748b; }
+body { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+.card { @apply bg-white rounded-lg shadow-sm border border-gray-100; }
+.btn-primary { @apply bg-blue-700 text-white px-4 py-2 rounded hover:bg-blue-800 transition-all; }
+.status-pill { @apply px-2 py-1 rounded text-xs font-medium; }

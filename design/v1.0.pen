@@ -1,0 +1,2639 @@
+{
+  "version": "2.8",
+  "children": [
+    {
+      "type": "frame",
+      "id": "bi8Au",
+      "x": 0,
+      "y": 0,
+      "name": "Frame",
+      "clip": true,
+      "width": 800,
+      "height": 600,
+      "fill": "#FFFFFF",
+      "layout": "none"
+    },
+    {
+      "type": "frame",
+      "id": "pgozE",
+      "x": 0,
+      "y": 0,
+      "name": "C端-首页(H5)",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "DjCNU",
+          "name": "homeStatus",
+          "width": "fill_container",
+          "height": 62,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "pVL8A",
+              "name": "homeTime",
+              "fill": "$foreground",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "D2WGf",
+              "name": "homeRight",
+              "gap": 6,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "pkfez",
+                  "width": 16,
+                  "height": 16,
+                  "iconFontName": "wifi",
+                  "iconFontFamily": "lucide",
+                  "fill": "$foreground"
+                },
+                {
+                  "type": "icon_font",
+                  "id": "YqIgi",
+                  "width": 24,
+                  "height": 24,
+                  "iconFontName": "battery",
+                  "iconFontFamily": "lucide",
+                  "fill": "$foreground"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "GwcqN",
+          "name": "homeContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            0,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "0rj0n",
+              "name": "homeTitleBar",
+              "width": "fill_container",
+              "height": 44,
+              "justifyContent": "center",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GMrQF",
+                  "fill": "$foreground",
+                  "content": "医学博览会议",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "sFS9u",
+              "name": "homeHero",
+              "clip": true,
+              "width": "fill_container",
+              "height": 180,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/generated-1773477874481.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 16,
+              "layout": "vertical"
+            },
+            {
+              "type": "frame",
+              "id": "6muu4",
+              "name": "homeInfoBox",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "sIZLH",
+                  "fill": "$foreground",
+                  "content": "关于会议",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "VucrR",
+                  "fill": "$muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "本次会议旨在探讨最新的医疗科技发展，汇聚全球顶尖医学专家...",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "6c5LF",
+              "name": "homeBtns",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "st36I",
+                  "name": "homeBtn1",
+                  "width": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": 12,
+                  "layout": "vertical",
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "gOpLm",
+                      "fill": "$primary-foreground",
+                      "content": "立即报名",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "wL7aC",
+                  "name": "homeBtn2",
+                  "width": "fill_container",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$primary"
+                  },
+                  "layout": "vertical",
+                  "padding": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "ZjRWm",
+                      "fill": "$primary",
+                      "content": "酒店预订",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "EYN5G",
+      "x": 400,
+      "y": 0,
+      "name": "C端-日程(H5)",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$background",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "cs7xg",
+      "x": 800,
+      "y": 0,
+      "name": "C端-我的(H5)",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$background",
+      "layout": "vertical"
+    },
+    {
+      "type": "frame",
+      "id": "Fxbx8",
+      "x": 0,
+      "y": 0,
+      "name": "C端-首页(H5)",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "pxX14",
+          "name": "homeStatus",
+          "width": "fill_container",
+          "height": 62,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "N8RpY",
+              "name": "homeTime",
+              "fill": "$foreground",
+              "content": "9:41",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Lqll0",
+          "name": "homeTitleBar",
+          "width": "fill_container",
+          "height": 44,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "ipFJ9",
+              "name": "homeTitleText",
+              "fill": "$foreground",
+              "content": "2026 全球医疗科技博览",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "oY8TL",
+          "name": "homeContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            0,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "eHP91",
+              "name": "homeHero",
+              "clip": true,
+              "width": "fill_container",
+              "height": 200,
+              "fill": {
+                "type": "image",
+                "enabled": true,
+                "url": "./images/generated-1773477955833.png",
+                "mode": "fill"
+              },
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "padding": 24,
+              "justifyContent": "end",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "ciyIb",
+                  "name": "homeHeroText",
+                  "fill": "#ffffff",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "医学科技\n引领未来",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Grq6M",
+              "name": "homeInfoBox",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "gap": 12,
+              "padding": 20,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "aRC2x",
+                  "fill": "$foreground",
+                  "content": "关于会议",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "rjDzd",
+                  "fill": "$muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "本次会议旨在探讨最新的医疗科技发展，汇聚全球顶尖医学专家、学者与企业代表，分享行业前沿技术。",
+                  "lineHeight": 1.5,
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "f7paY",
+              "name": "homeBtns",
+              "width": "fill_container",
+              "gap": 16,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "RO79H",
+                  "name": "homeBtn1",
+                  "width": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": 12,
+                  "padding": 14,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "t9ChL",
+                      "fill": "$primary-foreground",
+                      "content": "立即报名",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LvF30",
+                  "name": "homeBtn2",
+                  "width": "fill_container",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$primary"
+                  },
+                  "padding": 14,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "J0jfY",
+                      "fill": "$primary",
+                      "content": "酒店预订",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "lBNDJ",
+          "name": "homeTabContainer",
+          "width": "fill_container",
+          "padding": [
+            12,
+            21,
+            21,
+            21
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "1r8L9",
+              "name": "homePill",
+              "width": "fill_container",
+              "height": 62,
+              "fill": "#ffffff",
+              "cornerRadius": 36,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border"
+              },
+              "gap": 4,
+              "padding": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "eCU4m",
+                  "name": "homeTab1",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "VnHup",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "home",
+                      "iconFontFamily": "lucide",
+                      "fill": "$primary-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "eFLGx",
+                      "fill": "$primary-foreground",
+                      "content": "首页",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iWTBF",
+                  "name": "homeTab2",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "qJehs",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "calendar",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Y6Nn3",
+                      "fill": "$muted-foreground",
+                      "content": "日程",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "AAAtJ",
+                  "name": "homeTab3",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "Dx9w3",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "user",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "Z3bKz",
+                      "fill": "$muted-foreground",
+                      "content": "我的",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "cj0LL",
+      "x": 400,
+      "y": 0,
+      "name": "C端-日程(H5)",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "vvyHm",
+          "width": "fill_container",
+          "height": 62,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center"
+        },
+        {
+          "type": "frame",
+          "id": "rM7yT",
+          "name": "schTitleBar",
+          "width": "fill_container",
+          "height": 44,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "vwvm5",
+              "fill": "$foreground",
+              "content": "会议日程",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "3N5sh",
+          "name": "schContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            16,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "nqwd3",
+              "name": "schTabs",
+              "width": "fill_container",
+              "height": 44,
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border"
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "v7N9n",
+                  "name": "schTab1",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 2
+                    },
+                    "fill": "$primary"
+                  },
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "APhPd",
+                      "fill": "$primary",
+                      "content": "主会场",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tskrh",
+                  "name": "schTab2",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4mumG",
+                      "fill": "$muted-foreground",
+                      "content": "分会场 A",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "Kl363",
+              "name": "schItem1",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "N28yc",
+                  "fill": "$primary",
+                  "content": "09:00 - 10:30",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "gUCa1",
+                  "fill": "$foreground",
+                  "content": "大会开幕式及主旨演讲",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "6P9jh",
+                  "fill": "$muted-foreground",
+                  "content": "张三 教授 · 北京大学医学部",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "HuVcT",
+          "width": "fill_container",
+          "height": 62,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center"
+        },
+        {
+          "type": "frame",
+          "id": "BG5PM",
+          "name": "schTitleBar",
+          "width": "fill_container",
+          "height": 44,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "QncNN",
+              "fill": "$foreground",
+              "content": "会议日程",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "K6JL8",
+          "name": "schContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 16,
+          "padding": [
+            16,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "ln6fI",
+              "name": "schTabs",
+              "width": "fill_container",
+              "height": 44,
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border"
+              },
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "vT9Dq",
+                  "name": "schT1",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 2
+                    },
+                    "fill": "$primary"
+                  },
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "MeQpg",
+                      "fill": "$primary",
+                      "content": "主会场",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YQ0Gl",
+                  "name": "schT2",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "layout": "vertical",
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "c17Bf",
+                      "fill": "$muted-foreground",
+                      "content": "分会场 A",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "RXUGx",
+              "name": "schItem1",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 12,
+              "layout": "vertical",
+              "gap": 8,
+              "padding": 16,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "9D91Y",
+                  "fill": "$primary",
+                  "content": "09:00 - 10:30",
+                  "fontFamily": "Inter",
+                  "fontSize": 12,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "YwdjV",
+                  "fill": "$foreground",
+                  "content": "大会开幕式及主旨演讲",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "M74IJ",
+                  "fill": "$muted-foreground",
+                  "content": "张三 教授 · 北京大学医学部",
+                  "fontFamily": "Inter",
+                  "fontSize": 14,
+                  "fontWeight": "normal"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "IXZso",
+          "name": "schItem2",
+          "width": "fill_container",
+          "fill": "$surface",
+          "cornerRadius": 12,
+          "layout": "vertical",
+          "gap": 8,
+          "padding": 16,
+          "children": [
+            {
+              "type": "text",
+              "id": "vz3jl",
+              "fill": "$primary",
+              "content": "10:30 - 12:00",
+              "fontFamily": "Inter",
+              "fontSize": 12,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "OKLba",
+              "fill": "$foreground",
+              "content": "AI在肿瘤靶向治疗中的应用",
+              "fontFamily": "Inter",
+              "fontSize": 16,
+              "fontWeight": "600"
+            },
+            {
+              "type": "text",
+              "id": "Tq0xr",
+              "fill": "$muted-foreground",
+              "content": "李四 研究员 · 上海交通大学",
+              "fontFamily": "Inter",
+              "fontSize": 14,
+              "fontWeight": "normal"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "cDAFe",
+          "name": "schTabContainer",
+          "width": "fill_container",
+          "padding": [
+            12,
+            21,
+            21,
+            21
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "t6ZSm",
+              "name": "schPill",
+              "width": "fill_container",
+              "height": 62,
+              "fill": "#ffffff",
+              "cornerRadius": 36,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border"
+              },
+              "gap": 4,
+              "padding": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "K1hjM",
+                  "name": "schT1",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "r6jQp",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "home",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "jjsOH",
+                      "fill": "$muted-foreground",
+                      "content": "首页",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "CBS0v",
+                  "name": "schT2",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "SksTV",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "calendar",
+                      "iconFontFamily": "lucide",
+                      "fill": "$primary-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "fjf8f",
+                      "fill": "$primary-foreground",
+                      "content": "日程",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "LmdFc",
+                  "name": "schT3",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "p9tCD",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "user",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "NaAPO",
+                      "fill": "$muted-foreground",
+                      "content": "我的",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "0kKaR",
+      "x": 800,
+      "y": 0,
+      "name": "C端-我的(H5)",
+      "clip": true,
+      "width": 375,
+      "height": 812,
+      "fill": "$background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "KFWRF",
+          "width": "fill_container",
+          "height": 62,
+          "padding": [
+            0,
+            16
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center"
+        },
+        {
+          "type": "frame",
+          "id": "r1s8E",
+          "name": "profTitleBar",
+          "width": "fill_container",
+          "height": 44,
+          "justifyContent": "center",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "text",
+              "id": "mPeaO",
+              "fill": "$foreground",
+              "content": "个人中心",
+              "fontFamily": "Inter",
+              "fontSize": 18,
+              "fontWeight": "600"
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "ONOm9",
+          "name": "profContent",
+          "width": "fill_container",
+          "height": "fill_container",
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            16,
+            16,
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "frame",
+              "id": "kyNMV",
+              "name": "profHeader",
+              "width": "fill_container",
+              "gap": 16,
+              "padding": [
+                0,
+                0,
+                16,
+                0
+              ],
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Gmf5D",
+                  "name": "profAvatar",
+                  "width": 64,
+                  "height": 64,
+                  "fill": "$primary",
+                  "cornerRadius": 32,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "pv86d",
+                      "fill": "$primary-foreground",
+                      "content": "S",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "MdRGP",
+                  "name": "profInfo",
+                  "layout": "vertical",
+                  "gap": 4,
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "kE3aE",
+                      "fill": "$foreground",
+                      "content": "Sandi (森燚)",
+                      "fontFamily": "Inter",
+                      "fontSize": 18,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "text",
+                      "id": "QOqnj",
+                      "fill": "$muted-foreground",
+                      "content": "138****0000",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "8VIVi",
+              "name": "profMenu",
+              "width": "fill_container",
+              "fill": "$surface",
+              "cornerRadius": 16,
+              "layout": "vertical",
+              "padding": [
+                8,
+                16
+              ],
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "DMrlc",
+                  "name": "profItem1",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border"
+                  },
+                  "padding": [
+                    16,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Wgucs",
+                      "fill": "$foreground",
+                      "content": "我的报名",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "WMXWX",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "STg50",
+                  "name": "profItem2",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border"
+                  },
+                  "padding": [
+                    16,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "qcRP7",
+                      "fill": "$foreground",
+                      "content": "我的投稿",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "g8qOR",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "tsw3c",
+                  "name": "profItem3",
+                  "width": "fill_container",
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": {
+                      "bottom": 1
+                    },
+                    "fill": "$border"
+                  },
+                  "padding": [
+                    16,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "4vHdx",
+                      "fill": "$foreground",
+                      "content": "我的酒店订单",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "nBcHv",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "D9Gcw",
+                  "name": "profItem4",
+                  "width": "fill_container",
+                  "padding": [
+                    16,
+                    0
+                  ],
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "fpiT9",
+                      "fill": "$foreground",
+                      "content": "设置",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    },
+                    {
+                      "type": "icon_font",
+                      "id": "f0uFI",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "chevron-right",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "Rfwch",
+          "name": "profTabContainer",
+          "width": "fill_container",
+          "padding": [
+            12,
+            21,
+            21,
+            21
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "R2j5Z",
+              "name": "profPill",
+              "width": "fill_container",
+              "height": 62,
+              "fill": "#ffffff",
+              "cornerRadius": 36,
+              "stroke": {
+                "align": "inside",
+                "thickness": 1,
+                "fill": "$border"
+              },
+              "gap": 4,
+              "padding": 4,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "PF0fn",
+                  "name": "profT1",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "ukOmp",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "layout-dashboard",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "oLMCj",
+                      "fill": "$muted-foreground",
+                      "content": "首页",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "iXZlc",
+                  "name": "profT2",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "0Ffou",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "calendar",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "sCyVu",
+                      "fill": "$muted-foreground",
+                      "content": "日程",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "Ngnbn",
+                  "name": "profT3",
+                  "width": "fill_container",
+                  "height": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": 26,
+                  "layout": "vertical",
+                  "gap": 4,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "BzddW",
+                      "width": 18,
+                      "height": 18,
+                      "iconFontName": "user",
+                      "iconFontFamily": "lucide",
+                      "fill": "$primary-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "WUANB",
+                      "fill": "$primary-foreground",
+                      "content": "我的",
+                      "fontFamily": "Inter",
+                      "fontSize": 10,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "f2p1w",
+      "x": 0,
+      "y": 1000,
+      "name": "C端-Web主页",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$background",
+      "layout": "vertical",
+      "children": [
+        {
+          "type": "frame",
+          "id": "Lq69m",
+          "name": "webHeader",
+          "width": "fill_container",
+          "height": 80,
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "bottom": 1
+            },
+            "fill": "$border"
+          },
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "space_between",
+          "alignItems": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "hU9s1",
+              "name": "webLogo",
+              "gap": 12,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "icon_font",
+                  "id": "Kpg3j",
+                  "width": 32,
+                  "height": 32,
+                  "iconFontName": "activity",
+                  "iconFontFamily": "lucide",
+                  "fill": "$primary"
+                },
+                {
+                  "type": "text",
+                  "id": "57uAx",
+                  "fill": "$foreground",
+                  "content": "2026 全球医疗科技博览",
+                  "fontFamily": "Inter",
+                  "fontSize": 24,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "PXMa9",
+              "name": "webNav",
+              "gap": 32,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "SwKis",
+                  "fill": "$primary",
+                  "content": "首页",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "IfBAS",
+                  "fill": "$foreground",
+                  "content": "会议日程",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "eemf2",
+                  "fill": "$foreground",
+                  "content": "论文投稿",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "F9Ofb",
+                  "fill": "$foreground",
+                  "content": "酒店住宿",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "hX87V",
+              "name": "webUser",
+              "gap": 16,
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "0IUFS",
+                  "fill": "$foreground",
+                  "content": "个人中心",
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "fu0GW",
+                  "name": "webAvatar",
+                  "width": 40,
+                  "height": 40,
+                  "fill": "$primary",
+                  "cornerRadius": 20,
+                  "justifyContent": "center",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "rG8Fo",
+                      "fill": "#ffffff",
+                      "content": "S",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "dSj17",
+          "name": "webHero",
+          "clip": true,
+          "width": "fill_container",
+          "height": 480,
+          "fill": {
+            "type": "image",
+            "enabled": true,
+            "url": "./images/generated-1773478213502.png",
+            "mode": "fill"
+          },
+          "layout": "vertical",
+          "padding": [
+            0,
+            80
+          ],
+          "justifyContent": "center",
+          "children": [
+            {
+              "type": "frame",
+              "id": "HCzek",
+              "name": "webHeroBox",
+              "width": 500,
+              "fill": "#ffffff",
+              "cornerRadius": 16,
+              "effect": {
+                "type": "shadow",
+                "shadowType": "outer",
+                "color": "#0000001A",
+                "offset": {
+                  "x": 0,
+                  "y": 12
+                },
+                "blur": 24
+              },
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 40,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wvXxF",
+                  "fill": "$foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "医学科技\n引领未来",
+                  "lineHeight": 1.2,
+                  "fontFamily": "Inter",
+                  "fontSize": 48,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "text",
+                  "id": "vrErD",
+                  "fill": "$muted-foreground",
+                  "textGrowth": "fixed-width",
+                  "width": "fill_container",
+                  "content": "2026年11月10日-12日 · 中国上海\n汇聚全球顶尖医学专家、学者与企业代表，分享行业前沿技术。",
+                  "lineHeight": 1.6,
+                  "fontFamily": "Inter",
+                  "fontSize": 16,
+                  "fontWeight": "normal"
+                },
+                {
+                  "type": "frame",
+                  "id": "W1IIc",
+                  "name": "heroBtns",
+                  "gap": 16,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "MC1Di",
+                      "name": "heroBtn1",
+                      "fill": "$primary",
+                      "cornerRadius": 8,
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "GCOMg",
+                          "fill": "#ffffff",
+                          "content": "立即报名",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "CGJKP",
+                      "name": "heroBtn2",
+                      "cornerRadius": 8,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$primary"
+                      },
+                      "padding": [
+                        16,
+                        32
+                      ],
+                      "justifyContent": "center",
+                      "alignItems": "center",
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "d0NQW",
+                          "fill": "$primary",
+                          "content": "了解日程",
+                          "fontFamily": "Inter",
+                          "fontSize": 18,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "qmRLi",
+          "name": "webContent",
+          "width": "fill_container",
+          "layout": "vertical",
+          "gap": 48,
+          "padding": 80,
+          "children": [
+            {
+              "type": "frame",
+              "id": "XcLOW",
+              "name": "webInfo",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "children": [
+                {
+                  "type": "text",
+                  "id": "GO3XE",
+                  "fill": "$foreground",
+                  "content": "大会简介",
+                  "fontFamily": "Inter",
+                  "fontSize": 32,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "YGVea",
+                  "name": "infoRow",
+                  "width": "fill_container",
+                  "gap": 64,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "Rb7UK",
+                      "name": "desc",
+                      "fill": "$muted-foreground",
+                      "textGrowth": "fixed-width",
+                      "width": "fill_container",
+                      "content": "2026 全球医疗科技博览是一场聚焦前沿医学技术与未来医疗创新的国际级盛会。本次大会吸引了来自50多个国家和地区的顶尖医学专家、科研攻关团队及领先医疗企业代表齐聚一堂。我们致力于搭建跨学科、跨领域的交流平台，分享前沿领域的最新突破。",
+                      "lineHeight": 1.8,
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    },
+                    {
+                      "type": "frame",
+                      "id": "lQdb4",
+                      "name": "statsBox",
+                      "fill": "$surface",
+                      "cornerRadius": 16,
+                      "gap": 32,
+                      "padding": 32,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "A4QVE",
+                          "name": "s1",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ybGR9",
+                              "fill": "$primary",
+                              "content": "50+",
+                              "fontFamily": "Inter",
+                              "fontSize": 32,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "HfGmE",
+                              "fill": "$muted-foreground",
+                              "content": "参会国家",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "L7OZS",
+                          "name": "s2",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "uBWvR",
+                              "fill": "$primary",
+                              "content": "200+",
+                              "fontFamily": "Inter",
+                              "fontSize": 32,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "1tKRQ",
+                              "fill": "$muted-foreground",
+                              "content": "特邀专家",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Kr0Qc",
+                          "name": "s3",
+                          "layout": "vertical",
+                          "gap": 8,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "aAUZq",
+                              "fill": "$primary",
+                              "content": "15000+",
+                              "fontFamily": "Inter",
+                              "fontSize": 32,
+                              "fontWeight": "600"
+                            },
+                            {
+                              "type": "text",
+                              "id": "ZsrsT",
+                              "fill": "$muted-foreground",
+                              "content": "参会人员",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "frame",
+      "id": "fErvc",
+      "x": 2000,
+      "y": 1000,
+      "name": "B端-工作台(Web)",
+      "clip": true,
+      "width": 1440,
+      "height": 900,
+      "fill": "$background",
+      "children": [
+        {
+          "type": "frame",
+          "id": "BQWmH",
+          "name": "sidebar",
+          "width": 240,
+          "height": "fill_container",
+          "fill": "$surface",
+          "stroke": {
+            "align": "inside",
+            "thickness": {
+              "right": 1
+            },
+            "fill": "$border"
+          },
+          "layout": "vertical",
+          "gap": 24,
+          "padding": [
+            24,
+            16
+          ],
+          "children": [
+            {
+              "type": "text",
+              "id": "SrRLp",
+              "fill": "$foreground",
+              "content": "会务管理后台",
+              "fontFamily": "Inter",
+              "fontSize": 20,
+              "fontWeight": "600"
+            },
+            {
+              "type": "frame",
+              "id": "pyE9X",
+              "name": "sbMenu",
+              "width": "fill_container",
+              "layout": "vertical",
+              "gap": 8,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "ozGyW",
+                  "name": "sbItem1",
+                  "width": "fill_container",
+                  "fill": "$primary",
+                  "cornerRadius": 8,
+                  "gap": 12,
+                  "padding": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "V0xnC",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "layout-dashboard",
+                      "iconFontFamily": "lucide",
+                      "fill": "$primary-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "j9BJd",
+                      "fill": "$primary-foreground",
+                      "content": "数据大盘",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "oR5hB",
+                  "name": "sbItem2",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 8,
+                  "gap": 12,
+                  "padding": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "qX4ct",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "calendar",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "XHom9",
+                      "fill": "$foreground",
+                      "content": "会议管理",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "gRFrL",
+                  "name": "sbItem3",
+                  "width": "fill_container",
+                  "fill": "#00000000",
+                  "cornerRadius": 8,
+                  "gap": 12,
+                  "padding": 12,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "zXA0Y",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "users",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "aoD8h",
+                      "fill": "$foreground",
+                      "content": "参会人员",
+                      "fontFamily": "Inter",
+                      "fontSize": 16,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "frame",
+          "id": "LMQzP",
+          "name": "main",
+          "width": "fill_container",
+          "height": "fill_container",
+          "fill": "$surface",
+          "layout": "vertical",
+          "children": [
+            {
+              "type": "frame",
+              "id": "YrWOn",
+              "name": "topHeader",
+              "width": "fill_container",
+              "height": 64,
+              "fill": "#ffffff",
+              "stroke": {
+                "align": "inside",
+                "thickness": {
+                  "bottom": 1
+                },
+                "fill": "$border"
+              },
+              "padding": [
+                0,
+                24
+              ],
+              "justifyContent": "space_between",
+              "alignItems": "center",
+              "children": [
+                {
+                  "type": "text",
+                  "id": "wymGb",
+                  "fill": "$foreground",
+                  "content": "2026 全球医疗科技博览",
+                  "fontFamily": "Inter",
+                  "fontSize": 18,
+                  "fontWeight": "600"
+                },
+                {
+                  "type": "frame",
+                  "id": "ZKW2z",
+                  "name": "userArea",
+                  "gap": 16,
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "icon_font",
+                      "id": "tH3mE",
+                      "width": 20,
+                      "height": 20,
+                      "iconFontName": "bell",
+                      "iconFontFamily": "lucide",
+                      "fill": "$muted-foreground"
+                    },
+                    {
+                      "type": "text",
+                      "id": "rtxXA",
+                      "fill": "$foreground",
+                      "content": "管理员",
+                      "fontFamily": "Inter",
+                      "fontSize": 14,
+                      "fontWeight": "normal"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "frame",
+              "id": "q9Zkp",
+              "name": "bContent",
+              "width": "fill_container",
+              "height": "fill_container",
+              "layout": "vertical",
+              "gap": 24,
+              "padding": 32,
+              "children": [
+                {
+                  "type": "frame",
+                  "id": "Vtj3V",
+                  "name": "pageTitle",
+                  "width": "fill_container",
+                  "justifyContent": "space_between",
+                  "alignItems": "center",
+                  "children": [
+                    {
+                      "type": "text",
+                      "id": "aB85Y",
+                      "fill": "$foreground",
+                      "content": "数据大盘",
+                      "fontFamily": "Inter",
+                      "fontSize": 24,
+                      "fontWeight": "600"
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "YYhsB",
+                  "name": "metrics",
+                  "width": "fill_container",
+                  "gap": 24,
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "HoHzg",
+                      "name": "m1",
+                      "width": "fill_container",
+                      "fill": "#ffffff",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "WBrvz",
+                          "fill": "$muted-foreground",
+                          "content": "累计报名人数",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "wDle0",
+                          "fill": "$foreground",
+                          "content": "12,543",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "npkLQ",
+                      "name": "m2",
+                      "width": "fill_container",
+                      "fill": "#ffffff",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "BJ2qS",
+                          "fill": "$muted-foreground",
+                          "content": "今日新增报名",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "ggxHI",
+                          "fill": "$foreground",
+                          "content": "+128",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "wW2Lb",
+                      "name": "m3",
+                      "width": "fill_container",
+                      "fill": "#ffffff",
+                      "cornerRadius": 12,
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": 1,
+                        "fill": "$border"
+                      },
+                      "layout": "vertical",
+                      "gap": 12,
+                      "padding": 24,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "rH2bL",
+                          "fill": "$muted-foreground",
+                          "content": "收到投稿总数",
+                          "fontFamily": "Inter",
+                          "fontSize": 14,
+                          "fontWeight": "normal"
+                        },
+                        {
+                          "type": "text",
+                          "id": "fNzJZ",
+                          "fill": "$foreground",
+                          "content": "3,892",
+                          "fontFamily": "Inter",
+                          "fontSize": 32,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                {
+                  "type": "frame",
+                  "id": "NWRKR",
+                  "name": "tableSection",
+                  "width": "fill_container",
+                  "fill": "#ffffff",
+                  "cornerRadius": 12,
+                  "stroke": {
+                    "align": "inside",
+                    "thickness": 1,
+                    "fill": "$border"
+                  },
+                  "layout": "vertical",
+                  "children": [
+                    {
+                      "type": "frame",
+                      "id": "plXJv",
+                      "name": "tableHeader",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$border"
+                      },
+                      "padding": 20,
+                      "children": [
+                        {
+                          "type": "text",
+                          "id": "03rE3",
+                          "fill": "$foreground",
+                          "content": "最近报名记录",
+                          "fontFamily": "Inter",
+                          "fontSize": 16,
+                          "fontWeight": "600"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "mILt2",
+                      "name": "tRow",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$border"
+                      },
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "EAZn5",
+                          "name": "tCol1",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "OkCEy",
+                              "fill": "$muted-foreground",
+                              "content": "姓名",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "Sw2IL",
+                          "name": "tCol2",
+                          "width": "fill_container",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "vyLy0",
+                              "fill": "$muted-foreground",
+                              "content": "单位",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "p6NTa",
+                          "name": "tCol3",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "3mqF7",
+                              "fill": "$muted-foreground",
+                              "content": "参会类型",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "oLFta",
+                          "name": "tCol4",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "vxQx5",
+                              "fill": "$muted-foreground",
+                              "content": "状态",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "q2Sya",
+                      "name": "r1",
+                      "width": "fill_container",
+                      "stroke": {
+                        "align": "inside",
+                        "thickness": {
+                          "bottom": 1
+                        },
+                        "fill": "$border"
+                      },
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "ahlNh",
+                          "name": "c11",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "2eL8D",
+                              "fill": "$foreground",
+                              "content": "李明",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "GkrlY",
+                          "name": "c12",
+                          "width": "fill_container",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "lVhRX",
+                              "fill": "$foreground",
+                              "content": "北京大学第三医院",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "vabhz",
+                          "name": "c13",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "haM7q",
+                              "fill": "$foreground",
+                              "content": "正式代表",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "ikwOa",
+                          "name": "c14",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "G0dgv",
+                              "name": "badge1",
+                              "fill": "#E2F6E9",
+                              "cornerRadius": 4,
+                              "padding": [
+                                4,
+                                8
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "boXQP",
+                                  "fill": "#00A63E",
+                                  "content": "已缴费",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "frame",
+                      "id": "DUdkc",
+                      "name": "r2",
+                      "width": "fill_container",
+                      "padding": 16,
+                      "children": [
+                        {
+                          "type": "frame",
+                          "id": "RZthI",
+                          "name": "c21",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "ZAVP8",
+                              "fill": "$foreground",
+                              "content": "王建国",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "600"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "HDCB7",
+                          "name": "c22",
+                          "width": "fill_container",
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "qz5Uq",
+                              "fill": "$foreground",
+                              "content": "复旦大学附属中山医院",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "QyBNH",
+                          "name": "c23",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "text",
+                              "id": "gkPSk",
+                              "fill": "$foreground",
+                              "content": "特邀专家",
+                              "fontFamily": "Inter",
+                              "fontSize": 14,
+                              "fontWeight": "normal"
+                            }
+                          ]
+                        },
+                        {
+                          "type": "frame",
+                          "id": "9Jm3Y",
+                          "name": "c24",
+                          "width": 120,
+                          "children": [
+                            {
+                              "type": "frame",
+                              "id": "uSopr",
+                              "name": "badge2",
+                              "fill": "#E8F0FE",
+                              "cornerRadius": 4,
+                              "padding": [
+                                4,
+                                8
+                              ],
+                              "children": [
+                                {
+                                  "type": "text",
+                                  "id": "mg3Mq",
+                                  "fill": "#1a73e8",
+                                  "content": "免缴费",
+                                  "fontFamily": "Inter",
+                                  "fontSize": 12,
+                                  "fontWeight": "normal"
+                                }
+                              ]
+                            }
+                          ]
+                        }
+                      ]
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variables": {
+    "background": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "border": {
+      "type": "color",
+      "value": "#E5E5EA"
+    },
+    "font-primary": {
+      "type": "string",
+      "value": "\"PingFang SC\", \"Helvetica Neue\", sans-serif"
+    },
+    "font-secondary": {
+      "type": "string",
+      "value": "\"PingFang SC\", \"Helvetica Neue\", sans-serif"
+    },
+    "foreground": {
+      "type": "color",
+      "value": "#1C1C1E"
+    },
+    "muted-foreground": {
+      "type": "color",
+      "value": "#8E8E93"
+    },
+    "primary": {
+      "type": "color",
+      "value": "#007AFF"
+    },
+    "primary-foreground": {
+      "type": "color",
+      "value": "#FFFFFF"
+    },
+    "surface": {
+      "type": "color",
+      "value": "#F7F8FA"
+    }
+  }
+}

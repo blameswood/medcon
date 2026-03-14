@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>学术会议管理平台 - v2.0 最终闭环版</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .active-nav { @apply bg-blue-600 text-white shadow-md; }
+        .glass-panel { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(10px); }
+        @keyframes pulse-soft { 0%, 100% { opacity: 1; } 50% { opacity: 0.7; } }
+        .live-indicator { animation: pulse-soft 2s infinite; }
+    </style>
+</head>
+<body class="bg-slate-100 font-sans">
+    <div class="bg-black text-white text-[10px] py-1 px-4 flex justify-between sticky top-0 z-[100]">
+        <span><i class="fas fa-check-circle text-green-400 mr-1"></i> 状态: v2.0 生产演示环境 (Final)</span>
+        <div class="flex gap-4">
+            <button onclick="switchView('admin')" id="btn-admin" class="bg-blue-600 px-3 rounded">管理端 (商家)</button>
+            <button onclick="switchView('client')" id="btn-client" class="bg-slate-800 px-3 rounded">宣传端 (C端)</button>
+        </div>
+    </div>
+    <div id="admin-view"></div>
+    <div id="client-view" class="hidden"></div>
+    <script src="admin.js"></script>
+    <script src="client.js"></script>
+    <script>
+        function switchView(view) {
+            document.getElementById('admin-view').classList.toggle('hidden', view !== 'admin');
+            document.getElementById('client-view').classList.toggle('hidden', view !== 'client');
+            document.getElementById('btn-admin').className = view === 'admin' ? 'bg-blue-600 px-3 rounded' : 'bg-slate-800 px-3 rounded';
+            document.getElementById('btn-client').className = view === 'client' ? 'bg-blue-600 px-3 rounded' : 'bg-slate-800 px-3 rounded';
+        }
+        window.onload = () => { renderAdmin(); renderClient(); };
+    </script>
+</body>
+</html>
