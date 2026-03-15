@@ -2,130 +2,125 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>SaaS 平台总管理后台 - SuperAdmin</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedCon - 数字化学术会议通用解决方案</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        .sidebar-active { background: #065f46; color: white; border-left: 4px solid #34d399; }
-        .card-stat { transition: transform 0.2s; }
-        .card-stat:hover { transform: translateY(-5px); }
+        :root {
+            --bg-color: #F9F7F2;
+            --text-main: #1A202C;
+            --accent-blue: #2D3748;
+            --accent-gold: #A0522D;
+        }
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+        .font-serif {
+            font-family: 'Playfair Display', serif;
+        }
+        .hero-gradient {
+            background: radial-gradient(circle at top right, rgba(160, 82, 45, 0.05), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(45, 55, 72, 0.05), transparent 40%);
+        }
+        .academic-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(45, 55, 72, 0.1);
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .academic-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-gold);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.05);
+        }
+        .card-number {
+            font-family: 'Playfair Display', serif;
+            opacity: 0.1;
+            font-style: italic;
+        }
     </style>
 </head>
-<body class="bg-gray-100 flex">
-    <aside class="w-64 bg-slate-900 h-screen sticky top-0 text-slate-300 flex flex-col shadow-2xl">
-        <div class="p-6 text-emerald-400 font-black text-2xl border-b border-slate-800">
-            SaaS <span class="text-white text-sm font-light uppercase tracking-widest">Master</span>
-        </div>
-        <nav class="mt-6 flex-1 px-3 space-y-1">
-            <div onclick="showPage('dash')" id="nav-dash" class="p-3 rounded-lg cursor-pointer flex items-center sidebar-active"><i class="fas fa-th-large w-8"></i> 平台概览</div>
-            <div onclick="showPage('merchants')" id="nav-merchants" class="p-3 rounded-lg cursor-pointer flex items-center hover:bg-slate-800"><i class="fas fa-store w-8"></i> 租户/商家管理</div>
-            <div onclick="showPage('plans')" id="nav-plans" class="p-3 rounded-lg cursor-pointer flex items-center hover:bg-slate-800"><i class="fas fa-layer-group w-8"></i> 套餐订阅控制</div>
-            <div onclick="showPage('logs')" id="nav-logs" class="p-3 rounded-lg cursor-pointer flex items-center hover:bg-slate-800"><i class="fas fa-shield-virus w-8"></i> 系统审计</div>
-        </nav>
-        <div class="p-6 bg-slate-800/50 text-xs">
-            <p>系统负载: 12%</p>
-            <p class="text-emerald-500">Node Cluster: Healthy</p>
-        </div>
-    </aside>
+<body class="min-h-screen hero-gradient flex flex-col justify-center items-center p-6 bg-[#F9F7F2]">
+    
+    <!-- 顶部学术装饰线 -->
+    <div class="fixed top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#A0522D]/30 to-transparent"></div>
 
-    <main class="flex-1 min-h-screen overflow-y-auto">
-        <header class="bg-white px-8 py-4 flex justify-between items-center shadow-sm">
-            <div class="text-slate-500 font-medium">系统根路径 > <span id="breadcrumb">平台概览</span></div>
-            <div class="flex items-center gap-6">
-                <div class="flex items-center gap-2"><i class="fas fa-server text-emerald-500 text-xs"></i><span class="text-xs font-mono">Aliyun-Region-01</span></div>
-                <img src="https://ui-avatars.com/api/?name=Super+Admin&background=059669&color=fff" class="w-8 h-8 rounded-full">
-            </div>
+    <div class="max-w-6xl w-full mx-auto space-y-16">
+        <!-- Hero Section -->
+        <header class="text-center space-y-4">
+            <h2 class="text-sm uppercase tracking-[0.3em] font-light text-slate-500 mb-2">Digital Academic Infrastructure</h2>
+            <h1 class="text-5xl md:text-7xl font-serif font-black tracking-tight leading-tight">
+                MedCon <span class="italic font-light">Suite</span>
+            </h1>
+            <p class="max-w-2xl mx-auto text-lg text-slate-600 font-light leading-relaxed">
+                为学术尊严而设计的数字化会议系统。集参会、研讨与管理于一体的演示空间。
+            </p>
+            <div class="w-16 h-px bg-slate-300 mx-auto mt-8"></div>
         </header>
 
-        <div id="content" class="p-8">
-            <div id="page-dash">
-                <div class="grid grid-cols-4 gap-6 mb-8">
-                    <div class="bg-white p-6 rounded-2xl shadow-sm card-stat border-b-4 border-emerald-500">
-                        <div class="text-gray-400 text-xs font-bold uppercase">累计入驻商家</div>
-                        <div class="text-3xl font-black mt-2">124 <span class="text-sm text-green-500 font-normal">+5</span></div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm card-stat border-b-4 border-blue-500">
-                        <div class="text-gray-400 text-xs font-bold uppercase">全平台活跃会议</div>
-                        <div class="text-3xl font-black mt-2">562 <span class="text-sm text-blue-500 font-normal">运行中</span></div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm card-stat border-b-4 border-purple-500">
-                        <div class="text-gray-400 text-xs font-bold uppercase">本月营收 (Subscription)</div>
-                        <div class="text-3xl font-black mt-2">¥ 82.4w</div>
-                    </div>
-                    <div class="bg-white p-6 rounded-2xl shadow-sm card-stat border-b-4 border-red-500">
-                        <div class="text-gray-400 text-xs font-bold uppercase">异常预警</div>
-                        <div class="text-3xl font-black mt-2 text-red-500">02</div>
+        <!-- Navigation Cards -->
+        <div class="grid md:grid-cols-3 gap-8">
+            
+            <!-- H5 Client -->
+            <a href="./design-ui/h5/index.html" class="academic-card group p-10 rounded-2xl flex flex-col h-full">
+                <div class="flex justify-between items-start mb-12">
+                    <span class="card-number text-6xl">01</span>
+                    <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 transition-colors">
+                        <svg class="w-5 h-5 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
                 </div>
+                <h3 class="text-2xl font-serif font-bold mb-3">移动端参会手册</h3>
+                <p class="text-slate-500 font-light flex-grow leading-relaxed">提供沉浸式的移动端交互体验，包含日程流、论文墙以及个人中心，适配所有主流智能手机。</p>
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center text-sm font-semibold text-slate-400 group-hover:text-[#A0522D] transition-colors">
+                    H5 MOBILE TERMINAL
+                </div>
+            </a>
 
-                <div class="bg-white rounded-2xl shadow-sm p-6 border">
-                    <h3 class="font-bold mb-4">实时资源消耗监控 (All Tenants)</h3>
-                    <div class="space-y-6">
-                        <div>
-                            <div class="flex justify-between text-xs mb-2"><span>云存储空间 (已用 1.2TB / 5TB)</span><span class="font-mono">24%</span></div>
-                            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden"><div class="bg-emerald-500 h-full w-[24%]"></div></div>
-                        </div>
-                        <div>
-                            <div class="flex justify-between text-xs mb-2"><span>短信服务余量 (35,000 / 1,000,000)</span><span class="text-red-500 font-bold">余额不足</span></div>
-                            <div class="w-full bg-gray-100 h-2 rounded-full overflow-hidden"><div class="bg-red-400 h-full w-[3.5%]"></div></div>
-                        </div>
+            <!-- Web Platform -->
+            <a href="./design-ui/web/index.html" class="academic-card group p-10 rounded-2xl flex flex-col h-full">
+                <div class="flex justify-between items-start mb-12">
+                    <span class="card-number text-6xl">02</span>
+                    <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 transition-colors">
+                        <svg class="w-5 h-5 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
                     </div>
                 </div>
-            </div>
+                <h3 class="text-2xl font-serif font-bold mb-3">Web 数字化门户</h3>
+                <p class="text-slate-500 font-light flex-grow leading-relaxed">针对桌面浏览器优化的综合门户，提供深度功能支持、多维日程筛选及流畅的响应式布局。</p>
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center text-sm font-semibold text-slate-400 group-hover:text-[#A0522D] transition-colors">
+                    WEB DESKTOP PORTAL
+                </div>
+            </a>
 
-            <div id="page-merchants" class="hidden">
-                <div class="flex justify-between items-center mb-6">
-                    <h2 class="text-xl font-bold">租户(商家)名单管理</h2>
-                    <button class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm">+ 开通新租户</button>
+            <!-- Super Admin -->
+            <a href="./super_admin.html" class="academic-card group p-10 rounded-2xl flex flex-col h-full">
+                <div class="flex justify-between items-start mb-12">
+                    <span class="card-number text-6xl">03</span>
+                    <div class="w-10 h-10 rounded-full border border-slate-200 flex items-center justify-center group-hover:bg-slate-900 group-hover:border-slate-900 transition-colors">
+                        <svg class="w-5 h-5 group-hover:text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                    </div>
                 </div>
-                <div class="bg-white rounded-2xl shadow-sm overflow-hidden border">
-                    <table class="w-full text-left text-sm">
-                        <thead class="bg-slate-50 border-b uppercase text-xs text-slate-500">
-                            <tr><th class="p-4">商家名称</th><th class="p-4">套餐版本</th><th class="p-4">到期时间</th><th class="p-4">会议总数</th><th class="p-4">操作</th></tr>
-                        </thead>
-                        <tbody class="divide-y">
-                            <tr>
-                                <td class="p-4"><div class="font-bold">华中人工智能协会</div><div class="text-[10px] text-gray-400">ID: TENANT-001</div></td>
-                                <td class="p-4"><span class="bg-purple-100 text-purple-700 px-2 py-1 rounded text-[10px] font-bold">旗舰版</span></td>
-                                <td class="p-4">2027-12-31</td>
-                                <td class="p-4 font-mono">24</td>
-                                <td class="p-4">
-                                    <button class="text-blue-600 hover:underline mr-3" onclick="alert('模拟登录功能：正在以【华中人工智能协会】身份进入会议后台...')">模拟登录</button>
-                                    <button class="text-red-600 hover:underline">冻结</button>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="p-4"><div class="font-bold">某高校实验室</div><div class="text-[10px] text-gray-400">ID: TENANT-082</div></td>
-                                <td class="p-4"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-[10px] font-bold">专业版</span></td>
-                                <td class="p-4">2026-06-20</td>
-                                <td class="p-4 font-mono">02</td>
-                                <td class="p-4">
-                                    <button class="text-blue-600 hover:underline mr-3">模拟登录</button>
-                                    <button class="text-gray-400">续费</button>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <h3 class="text-2xl font-serif font-bold mb-3">SaaS 运营管控区</h3>
+                <p class="text-slate-500 font-light flex-grow leading-relaxed">系统级最高权限入口。高效管理租户入驻、套餐订阅以及全平台资源消耗审计。</p>
+                <div class="mt-8 pt-6 border-t border-slate-100 flex items-center text-sm font-semibold text-slate-400 group-hover:text-[#A0522D] transition-colors">
+                    CONTROL CENTER
                 </div>
-            </div>
+            </a>
+
         </div>
-    </main>
 
-    <script>
-        function showPage(id) {
-            // 切换页面显示
-            document.getElementById('page-dash').classList.add('hidden');
-            document.getElementById('page-merchants').classList.add('hidden');
-            document.getElementById('page-' + id).classList.remove('hidden');
-            
-            // 切换导航样式
-            document.querySelectorAll('nav div').forEach(el => el.className = 'p-3 rounded-lg cursor-pointer flex items-center hover:bg-slate-800');
-            document.getElementById('nav-' + id).className = 'p-3 rounded-lg cursor-pointer flex items-center sidebar-active';
-            
-            // 切换面包屑
-            const titles = {'dash': '平台概览', 'merchants': '租户/商家管理', 'plans': '套餐订阅控制', 'logs': '系统审计'};
-            document.getElementById('breadcrumb').innerText = titles[id];
-        }
-    </script>
+        <!-- Footer Footer Footer -->
+        <footer class="text-center pb-8">
+            <p class="text-xs text-slate-400 font-light tracking-[0.1em]">
+                &copy; 2026 Developed by Sandi / Proudly presented by <span class="font-bold">MedCon Team</span>
+            </p>
+        </footer>
+    </div>
+
 </body>
 </html>
