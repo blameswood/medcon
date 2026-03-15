@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>帮助中心 - 个人中心</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .profileLayout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 60px 80px; max-width: 1440px; margin: 0 auto; }
+        .sidebar { background: #fff; border-radius: 20px; padding: 24px; border: 1px solid var(--border); height: fit-content; }
+        .sideNav { display: flex; flex-direction: column; gap: 8px; }
+        .sideNavItem { padding: 12px 16px; border-radius: 12px; color: var(--mutedForeground); transition: all 0.2s; display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .sideNavItem:hover { background: #f8fafc; color: var(--primary); }
+        .sideNavItem.active { background: #eff6ff; color: var(--primary); }
+
+        .mainArea { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--shadowSm); border: 1px solid var(--border); }
+
+        /* FAQ 折叠面板 */
+        .faqSection { margin-bottom: 48px; }
+        .faqItem {
+            border: 1px solid var(--border); border-radius: 12px;
+            margin-bottom: 12px; overflow: hidden; transition: all 0.2s;
+        }
+        .faqItem:hover { border-color: var(--primary); }
+        .faqQuestion {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 24px; cursor: pointer; font-weight: 600; font-size: 15px;
+            background: #fff; user-select: none;
+        }
+        .faqArrow { transition: transform 0.3s; font-size: 12px; color: var(--mutedForeground); }
+        .faqItem.open .faqArrow { transform: rotate(180deg); }
+        .faqAnswer {
+            max-height: 0; overflow: hidden; transition: max-height 0.3s ease;
+            padding: 0 24px; font-size: 14px; line-height: 1.7; color: var(--mutedForeground);
+        }
+        .faqItem.open .faqAnswer { max-height: 300px; padding: 0 24px 20px; }
+
+        /* 联系我们卡片 */
+        .contactGrid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+        .contactCard {
+            background: var(--background); border-radius: 16px;
+            padding: 28px; text-align: center;
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+        }
+        .contactIcon { font-size: 40px; line-height: 1; }
+        .contactLabel { font-size: 13px; color: var(--mutedForeground); }
+        .contactValue { font-size: 15px; font-weight: 600; word-break: break-all; }
+    </style>
+</head>
+<body>
+
+    <header class="webHeader">
+        <div class="webLogo">🌐 MedCon 2026</div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem">论文投稿</a>
+            <a href="hotel.html" class="webNavItem">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <a href="index.html" class="langSwitch">返回主页</a>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" style="width:40px;height:40px;border-radius:20px;border:2px solid var(--primary);">
+        </div>
+    </header>
+
+    <main class="profileLayout">
+
+        <!-- 统一侧边栏 -->
+        <aside class="sidebar">
+            <div class="sideNav">
+                <a href="profile.html" class="sideNavItem">📋 我的报名</a>
+                <a href="my-papers.html" class="sideNavItem">📄 我的投稿</a>
+                <a href="my-hotels.html" class="sideNavItem">🏨 酒店预订</a>
+                <a href="my-schedule.html" class="sideNavItem">📅 我的日程</a>
+                <a href="my-profile.html" class="sideNavItem">👤 个人资料</a>
+                <div style="margin: 12px 0; border-top: 1px solid var(--border);"></div>
+                <a href="help.html" class="sideNavItem active">❓ 帮助中心</a>
+                <a href="help.html#contact" class="sideNavItem">📞 联系我们</a>
+                <a href="index.html" class="sideNavItem" style="color: #ef4444;">🚪 退出登录</a>
+            </div>
+        </aside>
+
+        <section class="mainArea">
+
+            <!-- FAQ 部分 -->
+            <div class="faqSection">
+                <h2 style="margin-bottom: 28px;">常见问题</h2>
+
+                <div class="faqItem open">
+                    <div class="faqQuestion" onclick="toggleFaq(this)">
+                        <span>如何修改已提交的报名信息？</span>
+                        <span class="faqArrow">▼</span>
+                    </div>
+                    <div class="faqAnswer">
+                        登录后进入「个人中心 → 我的报名」页面，点击报名记录下方的「修改信息」按钮即可。
+                        如报名已审核通过或已支付，部分字段可能无法修改，请联系组委会工作人员协助处理。
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <div class="faqQuestion" onclick="toggleFaq(this)">
+                        <span>论文投稿截止日期是什么时候？</span>
+                        <span class="faqArrow">▼</span>
+                    </div>
+                    <div class="faqAnswer">
+                        本届会议论文投稿截止日期为 2026年4月15日 23:59（北京时间）。逾期投稿将不予受理。建议您尽早提交，以便有充足时间进行修改和评审反馈。
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <div class="faqQuestion" onclick="toggleFaq(this)">
+                        <span>如何取消酒店预订？</span>
+                        <span class="faqArrow">▼</span>
+                    </div>
+                    <div class="faqAnswer">
+                        进入「个人中心 → 酒店预订」页面，找到对应订单点击「取消订单」。会议开始前7天可免费取消；7天内取消将收取首晚房费作为违约金。
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <div class="faqQuestion" onclick="toggleFaq(this)">
+                        <span>签到码和餐券码如何使用？</span>
+                        <span class="faqArrow">▼</span>
+                    </div>
+                    <div class="faqAnswer">
+                        签到码用于会议当天入场签到，请在入口处出示二维码给工作人员扫描。餐券码用于会议期间的工作餐领取，请在餐厅入口出示。两码均可在「个人中心 → 我的报名」页面查看。
+                    </div>
+                </div>
+
+                <div class="faqItem">
+                    <div class="faqQuestion" onclick="toggleFaq(this)">
+                        <span>如何开具发票？</span>
+                        <span class="faqArrow">▼</span>
+                    </div>
+                    <div class="faqAnswer">
+                        会议结束后15个工作日内，组委会将通过您注册时填写的邮箱发送电子发票。如需纸质发票或修改抬头信息，请联系 finance@medcon2026.org。
+                    </div>
+                </div>
+            </div>
+
+            <!-- 联系我们 -->
+            <div id="contact">
+                <h2 style="margin-bottom: 28px;">联系我们</h2>
+                <div class="contactGrid">
+                    <div class="contactCard">
+                        <span class="contactIcon">📞</span>
+                        <span class="contactLabel">咨询热线</span>
+                        <span class="contactValue">400-888-2026</span>
+                    </div>
+                    <div class="contactCard">
+                        <span class="contactIcon">📧</span>
+                        <span class="contactLabel">官方邮箱</span>
+                        <span class="contactValue">support@medcon2026.org</span>
+                    </div>
+                    <div class="contactCard">
+                        <span class="contactIcon">📍</span>
+                        <span class="contactLabel">会议地点</span>
+                        <span class="contactValue">杭州国际博览中心</span>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+    <script>
+        /* FAQ 折叠交互 */
+        function toggleFaq(el) {
+            const item = el.closest('.faqItem');
+            // 关闭其他已展开项
+            document.querySelectorAll('.faqItem.open').forEach(i => {
+                if (i !== item) i.classList.remove('open');
+            });
+            item.classList.toggle('open');
+        }
+    </script>
+
+</body>
+</html>

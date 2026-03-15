@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>我的日程 - MedCon</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* 标题栏 */
+    .titleBar { height: 44px; display: flex; align-items: center; justify-content: center; font-size: 17px; font-weight: 600; background: #fff; border-bottom: 1px solid var(--border); }
+    .backBtn { position: absolute; left: 16px; font-size: 20px; color: var(--foreground); cursor: pointer; }
+
+    /* 身份/关注 Tab */
+    .mySchTabs { display: flex; height: 44px; background: #fff; border-bottom: 1px solid var(--border); }
+    .mySchTab { flex: 1; display: flex; align-items: center; justify-content: center; font-size: 14px; color: var(--mutedForeground); cursor: pointer; position: relative; }
+    .mySchTab.active { color: var(--primary); font-weight: 600; }
+    .mySchTab.active::after { content: ''; position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 24px; height: 3px; background: var(--primary); border-radius: 2px; }
+
+    /* 内容列表 */
+    .mySchList { flex: 1; overflow-y: auto; padding: 16px 16px 100px; display: flex; flex-direction: column; gap: 16px; }
+    
+    .mySchCard { background: var(--surface); border-radius: var(--radiusLg); padding: 16px; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
+    .cardHdr { display: flex; justify-content: space-between; margin-bottom: 8px; }
+    .cardTime { font-size: 14px; font-weight: 700; color: var(--primary); }
+    .roleBadge { font-size: 11px; padding: 2px 8px; border-radius: 6px; font-weight: 600; }
+    .roleSpeaker { background: #eff6ff; color: var(--primary); }
+    .roleFollow { background: #ecfdf5; color: #10b981; }
+    
+    .cardTitle { font-size: 15px; font-weight: 600; line-height: 1.4; margin-bottom: 8px; }
+    .cardLoc { font-size: 12px; color: var(--mutedForeground); display: flex; align-items: center; gap: 4px; }
+  </style>
+</head>
+<body>
+  <div class="pageWrap">
+    <header class="titleBar">
+        <span class="backBtn" onclick="location.href='profile.html'">←</span>
+        <span>我的日程</span>
+    </header>
+
+    <div class="mySchTabs">
+      <div class="mySchTab active" onclick="switchTab(this, 'all')">全部日程</div>
+      <div class="mySchTab" onclick="switchTab(this, 'speaker')">我主讲的</div>
+      <div class="mySchTab" onclick="switchTab(this, 'followed')">已关注</div>
+    </div>
+
+    <div class="mySchList">
+        <!-- 主讲日程 -->
+        <div class="mySchCard" data-type="speaker">
+            <div class="cardHdr">
+                <span class="cardTime">09:00 - 10:30 (11月10日)</span>
+                <span class="roleBadge roleSpeaker">主讲人</span>
+            </div>
+            <div class="cardTitle">临床医学中的AI视觉识别技术研究综述</div>
+            <div class="cardLoc">📍 会展中心 · 2楼 201 研讨室</div>
+        </div>
+
+        <!-- 关注日程 -->
+        <div class="mySchCard" data-type="followed">
+            <div class="cardHdr">
+                <span class="cardTime">14:00 - 15:30 (11月10日)</span>
+                <span class="roleBadge roleFollow">已关注</span>
+            </div>
+            <div class="cardTitle">全球基因组研究计划：十年回顾与展望</div>
+            <div class="cardLoc">📍 会展中心 · 大展示厅</div>
+        </div>
+
+        <!-- 主讲日程 2 -->
+        <div class="mySchCard" data-type="speaker">
+            <div class="cardHdr">
+                <span class="cardTime">10:00 - 11:30 (11月11日)</span>
+                <span class="roleBadge roleSpeaker">主讲人</span>
+            </div>
+            <div class="cardTitle">智慧医疗系统的安全防护架构设计</div>
+            <div class="cardLoc">📍 滨江凯悦酒店 · 宴会厅A</div>
+        </div>
+    </div>
+
+    <!-- 底部 Tab -->
+    <div class="tabBar">
+      <div class="tabItem" onclick="location.href='index.html'"><span class="tabIcon">🏠</span><span>首页</span></div>
+      <div class="tabItem" onclick="location.href='schedule.html'"><span class="tabIcon">📅</span><span>日程</span></div>
+      <div class="tabItem active" onclick="location.href='profile.html'"><span class="tabIcon">👤</span><span>我的</span></div>
+    </div>
+  </div>
+
+  <script>
+    function switchTab(el, type) {
+        document.querySelectorAll('.mySchTab').forEach(t => t.classList.remove('active'));
+        el.classList.add('active');
+        
+        const cards = document.querySelectorAll('.mySchCard');
+        cards.forEach(card => {
+            if (type === 'all' || card.dataset.type === type) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+  </script>
+</body>
+</html>

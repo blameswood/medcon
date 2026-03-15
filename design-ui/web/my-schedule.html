@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的日程 - 个人中心</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .profileLayout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 60px 80px; max-width: 1440px; margin: 0 auto; }
+        .sidebar { background: #fff; border-radius: 20px; padding: 24px; border: 1px solid var(--border); height: fit-content; }
+        .sideNav { display: flex; flex-direction: column; gap: 8px; }
+        .sideNavItem { padding: 12px 16px; border-radius: 12px; color: var(--mutedForeground); transition: all 0.2s; display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .sideNavItem:hover { background: #f8fafc; color: var(--primary); }
+        .sideNavItem.active { background: #eff6ff; color: var(--primary); }
+        
+        .mainArea { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--shadowSm); border: 1px solid var(--border); }
+        .schItem { display: flex; gap: 24px; padding: 24px; border-bottom: 1px solid var(--border); }
+        .schTime { width: 120px; font-size: 18px; font-weight: 700; color: var(--primary); text-align: center; }
+        .schInfo { flex: 1; }
+        .schTag { display: inline-block; padding: 4px 10px; border-radius: 6px; background: #f1f5f9; font-size: 12px; margin-bottom: 8px; }
+
+        /* 新增 Tab 样式 */
+        .schTabs { display: flex; gap: 32px; border-bottom: 2px solid var(--border); margin-bottom: 32px; }
+        .schTab { padding: 12px 4px; font-size: 16px; font-weight: 500; color: var(--mutedForeground); cursor: pointer; position: relative; transition: all 0.2s; }
+        .schTab:hover { color: var(--primary); }
+        .schTab.active { color: var(--primary); font-weight: 700; }
+        .schTab.active::after { content: ''; position: absolute; bottom: -2px; left: 0; right: 0; height: 2px; background: var(--primary); }
+
+        /* 身份徽章 */
+        .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 11px; font-weight: 600; margin-left: 8px; vertical-align: middle; }
+        .badgeSpeaker { background: #eff6ff; color: var(--primary); }
+        .badgeFollow { background: #ecfdf5; color: #059669; }
+    </style>
+</head>
+<body>
+    <header class="webHeader">
+        <div class="webLogo">🌐 MedCon 2026</div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem">论文投稿</a>
+            <a href="hotel.html" class="webNavItem">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <a href="index.html" class="langSwitch">返回主页</a>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" style="width:40px;height:40px;border-radius:20px;border:2px solid var(--primary);">
+        </div>
+    </header>
+
+    <main class="profileLayout">
+        <aside class="sidebar">
+            <div class="sideNav">
+                <a href="profile.html" class="sideNavItem">📋 我的报名</a>
+                <a href="my-papers.html" class="sideNavItem">📄 我的投稿</a>
+                <a href="my-hotels.html" class="sideNavItem">🏨 酒店预订</a>
+                <a href="my-schedule.html" class="sideNavItem active">📅 我的日程</a>
+                <a href="my-profile.html" class="sideNavItem">👤 个人资料</a>
+                <div style="margin: 12px 0; border-top: 1px solid var(--border);"></div>
+                <a href="help.html" class="sideNavItem">❓ 帮助中心</a>
+                <a href="help.html#contact" class="sideNavItem">📞 联系我们</a>
+                <a href="index.html" class="sideNavItem" style="color: #ef4444;">🚪 退出登录</a>
+            </div>
+        </aside>
+
+        <section class="mainArea">
+            <h2 style="margin-bottom: 32px;">我的日程管理</h2>
+            
+            <!-- 分类选项卡 -->
+            <div class="schTabs">
+                <div class="schTab active" onclick="filterSch('all', this)">全部日程</div>
+                <div class="schTab" onclick="filterSch('speaker', this)">我主讲的</div>
+                <div class="schTab" onclick="filterSch('follow', this)">已关注的</div>
+            </div>
+
+            <div id="schList">
+                <div class="schItem" data-type="speaker">
+                    <div class="schTime">
+                        <div>09:00</div>
+                        <div style="font-size:12px; font-weight:400; color:var(--mutedForeground); margin-top:4px;">11月10日</div>
+                    </div>
+                    <div class="schInfo">
+                        <span class="schTag">专题演讲</span>
+                        <span class="badge badgeSpeaker">主讲人</span>
+                        <h3 style="margin-bottom: 8px;">临床医学中的AI视觉识别技术研究综述</h3>
+                        <p class="textMuted textSm">地点：会展中心 · 2楼 201 研讨室</p>
+                    </div>
+                </div>
+
+                <div class="schItem" data-type="follow">
+                    <div class="schTime">
+                        <div>14:30</div>
+                        <div style="font-size:12px; font-weight:400; color:var(--mutedForeground); margin-top:4px;">11月10日</div>
+                    </div>
+                    <div class="schInfo">
+                        <span class="schTag">分论坛</span>
+                        <span class="badge badgeFollow">已关注</span>
+                        <h3 style="margin-bottom: 8px;">全球基因组研究计划：十年回顾与展望</h3>
+                        <p class="textMuted textSm">地点：会展中心 · 大展示厅</p>
+                    </div>
+                </div>
+
+                <div class="schItem" data-type="speaker">
+                    <div class="schTime">
+                        <div>10:00</div>
+                        <div style="font-size:12px; font-weight:400; color:var(--mutedForeground); margin-top:4px;">11月11日</div>
+                    </div>
+                    <div class="schInfo">
+                        <span class="schTag">学术研讨</span>
+                        <span class="badge badgeSpeaker">主讲人</span>
+                        <h3 style="margin-bottom: 8px;">智慧医疗系统的安全防护架构设计</h3>
+                        <p class="textMuted textSm">地点：滨江凯悦酒店 · 宴会厅A</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script>
+            function filterSch(type, el) {
+                // 切换 Tab 视觉
+                document.querySelectorAll('.schTab').forEach(t => t.classList.remove('active'));
+                el.classList.add('active');
+
+                // 过滤内容
+                const items = document.querySelectorAll('.schItem');
+                items.forEach(item => {
+                    if (type === 'all' || item.dataset.type === type) {
+                        item.style.display = 'flex';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }
+        </script>
+    </main>
+
+    <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+</body>
+</html>

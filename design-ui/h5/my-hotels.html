@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>我的酒店 - MedCon</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .orderList { padding: 16px; display: flex; flex-direction: column; gap: 16px; }
+        .orderCard { 
+            background: #fff; border-radius: 20px; padding: 20px; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.03); border: 1px solid var(--border);
+            position: relative; overflow: hidden;
+        }
+        .orderHeader { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 16px; }
+        .hotelBrief { display: flex; gap: 12px; }
+        .hotelIcon { width: 50px; height: 50px; border-radius: 12px; background: #f1f5f9; display: flex; align-items: center; justify-content: center; font-size: 24px; }
+        .hotelName { font-size: 16px; font-weight: 700; color: var(--foreground); }
+        .hotelLoc { font-size: 11px; color: var(--mutedForeground); margin-top: 2px; }
+        
+        .statusBadge { 
+            padding: 4px 10px; border-radius: 8px; font-size: 11px; font-weight: 600;
+            background: #ecfdf5; color: #10b981;
+        }
+
+        .orderDetails { 
+            background: #f8fafc; border-radius: 12px; padding: 12px; 
+            display: grid; grid-template-columns: 1fr; gap: 8px;
+        }
+        .detailRow { display: flex; justify-content: space-between; font-size: 13px; }
+        .detailLabel { color: var(--mutedForeground); }
+        .detailValue { font-weight: 500; }
+
+        .orderAction { margin-top: 16px; display: flex; justify-content: flex-end; gap: 12px; }
+        .btnSm { padding: 6px 16px; border-radius: 10px; font-size: 12px; font-weight: 600; cursor: pointer; }
+        .btnGhost { border: 1px solid var(--border); background: #fff; color: var(--mutedForeground); }
+        .btnActive { border: 1px solid var(--primary); background: #eff6ff; color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="pageWrap">
+        <header class="titleBar">
+            <span class="backBtn" onclick="location.href='profile.html'">←</span>
+            <span>酒店订单</span>
+        </header>
+
+        <div class="scrollArea" style="padding:0;">
+            <div class="orderList">
+                <!-- 示例订单 1 -->
+                <div class="orderCard">
+                    <div class="orderHeader">
+                        <div class="hotelBrief">
+                            <div class="hotelIcon">🏨</div>
+                            <div>
+                                <div class="hotelName">西湖国际大酒店</div>
+                                <div class="hotelLoc">五星级 · 步行至会场约 5 分钟</div>
+                            </div>
+                        </div>
+                        <span class="statusBadge">预订成功</span>
+                    </div>
+                    
+                    <div class="orderDetails">
+                        <div class="detailRow">
+                            <span class="detailLabel">预订房型</span>
+                            <span class="detailValue">高级大床房 (含双早)</span>
+                        </div>
+                        <div class="detailRow">
+                            <span class="detailLabel">入住周期</span>
+                            <span class="detailValue">11月09日 - 11月12日 (3晚)</span>
+                        </div>
+                        <div class="detailRow">
+                            <span class="detailLabel">订单总额</span>
+                            <span class="detailValue" style="color:var(--primary); font-weight:700;">¥1,440</span>
+                        </div>
+                    </div>
+
+                    <div class="orderAction">
+                        <button class="btnSm btnGhost">取消订单</button>
+                        <button class="btnSm btnActive" onclick="location.href='hotel.html'">再次预订</button>
+                    </div>
+                </div>
+
+                <!-- 示例订单 2 -->
+                <div class="orderCard">
+                    <div class="orderHeader">
+                        <div class="hotelBrief">
+                            <div class="hotelIcon">🏢</div>
+                            <div>
+                                <div class="hotelName">钱塘商务酒店</div>
+                                <div class="hotelLoc">商务精选 · 提供往返穿梭巴士</div>
+                            </div>
+                        </div>
+                        <span class="statusBadge" style="background:#f1f5f9; color:var(--mutedForeground);">已离店</span>
+                    </div>
+                    
+                    <div class="orderDetails">
+                        <div class="detailRow">
+                            <span class="detailLabel">预订房型</span>
+                            <span class="detailValue">标准双床房</span>
+                        </div>
+                        <div class="detailRow">
+                            <span class="detailLabel">入住周期</span>
+                            <span class="detailValue">11月05日 - 11月06日 (1晚)</span>
+                        </div>
+                    </div>
+
+                    <div class="orderAction">
+                        <button class="btnSm btnGhost">开具发票</button>
+                        <button class="btnSm btnActive" onclick="location.href='hotel.html'">再次预订</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="tabBar">
+            <div class="tabItem" onclick="location.href='index.html'"><span class="tabIcon">🏠</span><span>首页</span></div>
+            <div class="tabItem" onclick="location.href='schedule.html'"><span class="tabIcon">📅</span><span>日程</span></div>
+            <div class="tabItem active" onclick="location.href='profile.html'"><span class="tabIcon">👤</span><span>我的</span></div>
+        </div>
+    </div>
+</body>
+</html>

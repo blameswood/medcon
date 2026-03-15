@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的投稿 - MedCon</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .paperList { padding: 16px; }
+        .paperItem { background: #fff; border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); border: 1px solid var(--border); }
+        .paperTitle { font-size: 15px; font-weight: 600; margin-bottom: 8px; line-height: 1.4; }
+        .paperMeta { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--mutedForeground); }
+        .status { padding: 4px 8px; border-radius: 6px; font-weight: 600; }
+        .statusPending { background: #fff7ed; color: #ea580c; }
+        .statusPassed { background: #ecfdf5; color: #059669; }
+    </style>
+</head>
+<body>
+    <div class="pageWrap">
+        <header class="titleBar">
+            <a href="profile.html" class="backBtn">✕</a>
+            <span>我的投稿</span>
+        </header>
+
+        <div class="scrollArea">
+            <div class="paperList">
+                <div class="paperItem">
+                    <div class="paperTitle">人工智能在临床诊断中的应用研究</div>
+                    <div class="paperMeta">
+                        <span>编号: #PAP-20260312</span>
+                        <span class="status statusPending">评审中</span>
+                    </div>
+                </div>
+                <div class="paperItem">
+                    <div class="paperTitle">抗肿瘤新药的临床二期试验分析报告</div>
+                    <div class="paperMeta">
+                        <span>编号: #PAP-20260215</span>
+                        <span class="status statusPassed">已录用</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="padding: 0 16px;">
+                <button class="btnOutline" onclick="location.href='paper.html'">+ 提交新投稿</button>
+            </div>
+        </div>
+
+        <div class="tabBar">
+            <div class="tabItem" onclick="location.href='index.html'">🏠<span>首页</span></div>
+            <div class="tabItem" onclick="location.href='schedule.html'">📅<span>日程</span></div>
+            <div class="tabItem active" onclick="location.href='profile.html'">👤<span>我的</span></div>
+        </div>
+    </div>
+</body>
+</html>

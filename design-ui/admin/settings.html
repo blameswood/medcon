@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>系统设置 - 管理后台</title>
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+  <div class="adminLayout">
+    <aside class="adminSidebar">
+      <div class="sidebarLogo"><span>✦</span><span>会议管理后台</span></div>
+      <nav class="sidebarNav">
+        <a class="sidebarItem" href="index.html"><span class="sidebarIcon">📊</span> 工作台</a>
+        <a class="sidebarItem" href="conference.html"><span class="sidebarIcon">🎤</span> 会议管理</a>
+        <a class="sidebarItem" href="attendees.html"><span class="sidebarIcon">👥</span> 参会管理</a>
+        <a class="sidebarItem" href="papers.html"><span class="sidebarIcon">📄</span> 投稿评审</a>
+        <a class="sidebarItem" href="hotel.html"><span class="sidebarIcon">🏨</span> 住宿管理</a>
+        <div class="sidebarDivider"></div>
+        <a class="sidebarItem active" href="javascript:void(0)"><span class="sidebarIcon">⚙️</span> 系统设置</a>
+      </nav>
+    </aside>
+
+    <div class="adminRight">
+      <div class="adminTopbar">
+        <span class="topbarTitle">系统设置</span>
+        <div class="topbarRight">
+          <span style="font-size:13px;color:var(--mutedForeground)">管理员</span>
+          <div class="topbarAvatar">A</div>
+        </div>
+      </div>
+
+      <div class="adminContent">
+
+        <!-- 签到设置 -->
+        <div class="tableCard" style="padding:32px">
+          <h3 style="font-size:18px;font-weight:600;margin-bottom:24px">签到设置</h3>
+          <div style="display:flex;flex-direction:column;gap:20px">
+            <div class="formGroup">
+              <label class="formLabel">签到方式</label>
+              <select class="formInput" style="height:44px">
+                <option>扫码签到</option>
+                <option>人脸识别签到</option>
+                <option>手动签到</option>
+              </select>
+            </div>
+            <div class="formGroup">
+              <label class="formLabel">允许重复签到</label>
+              <select class="formInput" style="height:44px">
+                <option>否</option>
+                <option>是</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- 权限设置 -->
+        <div class="tableCard">
+          <div class="tableToolbar">
+            <span class="tableTitle">权限管理</span>
+            <button class="btnSmPrimary">+ 添加用户</button>
+          </div>
+          <table class="dataTable">
+            <thead>
+              <tr>
+                <th>用户名</th>
+                <th>角色</th>
+                <th>邮箱</th>
+                <th>状态</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>admin</td>
+                <td>超级管理员</td>
+                <td>admin@medcon.org</td>
+                <td><span class="statusBadge statusActive">启用</span></td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">编辑</a></td>
+              </tr>
+              <tr>
+                <td>editor01</td>
+                <td>编辑</td>
+                <td>editor@medcon.org</td>
+                <td><span class="statusBadge statusActive">启用</span></td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">编辑</a></td>
+              </tr>
+              <tr>
+                <td>reviewer01</td>
+                <td>评审员</td>
+                <td>reviewer@medcon.org</td>
+                <td><span class="statusBadge statusPending">待激活</span></td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">编辑</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pagination">
+            <div class="pageSizeSelect">
+              每页显示
+              <select><option>10</option><option>20</option><option>50</option></select>
+              条
+            </div>
+            <div style="display:flex;align-items:center;gap:16px">
+              <span class="pageInfo">共 3 条记录</span>
+              <div class="pageButtons">
+                <div class="pageBtn">‹</div>
+                <div class="pageBtn active">1</div>
+                <div class="pageBtn">›</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

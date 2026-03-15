@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会议管理 - 管理后台</title>
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+  <div class="adminLayout">
+
+    <!-- 侧边栏 -->
+    <aside class="adminSidebar">
+      <div class="sidebarLogo"><span>✦</span><span>会议管理后台</span></div>
+      <nav class="sidebarNav">
+        <a class="sidebarItem" href="index.html"><span class="sidebarIcon">📊</span> 工作台</a>
+        <a class="sidebarItem active" href="javascript:void(0)"><span class="sidebarIcon">🎤</span> 会议管理</a>
+        <a class="sidebarItem" href="attendees.html"><span class="sidebarIcon">👥</span> 参会管理</a>
+        <a class="sidebarItem" href="papers.html"><span class="sidebarIcon">📄</span> 投稿评审</a>
+        <a class="sidebarItem" href="hotel.html"><span class="sidebarIcon">🏨</span> 住宿管理</a>
+        <div class="sidebarDivider"></div>
+        <a class="sidebarItem" href="settings.html"><span class="sidebarIcon">⚙️</span> 系统设置</a>
+      </nav>
+    </aside>
+
+    <div class="adminRight">
+      <div class="adminTopbar">
+        <span class="topbarTitle">会议管理</span>
+        <div class="topbarRight">
+          <span style="font-size:13px;color:var(--mutedForeground)">管理员</span>
+          <div class="topbarAvatar">A</div>
+        </div>
+      </div>
+
+      <div class="adminContent">
+        <div class="tableCard">
+          <!-- 工具栏：搜索 + 新增 -->
+          <div class="tableToolbar">
+            <div style="display:flex;gap:12px;align-items:center">
+              <input class="searchInput" placeholder="搜索会议名称...">
+              <button class="btnSmPrimary">搜索</button>
+            </div>
+            <button class="btnSmPrimary">+ 新增会议</button>
+          </div>
+
+          <!-- 表格 -->
+          <table class="dataTable">
+            <thead>
+              <tr>
+                <th>会议名称</th>
+                <th>时间</th>
+                <th>地点</th>
+                <th>状态</th>
+                <th>报名人数</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2026 全球医疗科技博览</td>
+                <td>2026-11-10 至 11-12</td>
+                <td>伦敦国际会议中心</td>
+                <td><span class="statusBadge statusActive">进行中</span></td>
+                <td>1,286</td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">编辑</a></td>
+              </tr>
+              <tr>
+                <td>第15届亚太心血管峰会</td>
+                <td>2026-12-05 至 12-07</td>
+                <td>北京国家会议中心</td>
+                <td><span class="statusBadge statusPending">筹备中</span></td>
+                <td>432</td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">编辑</a></td>
+              </tr>
+              <tr>
+                <td>数字医疗创新论坛</td>
+                <td>2027-03-15 至 03-16</td>
+                <td>上海世博展览馆</td>
+                <td><span class="statusBadge statusDraft">草稿</span></td>
+                <td>0</td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">编辑</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <!-- 分页 -->
+          <div class="pagination">
+            <div class="pageSizeSelect">
+              每页显示
+              <select><option>10</option><option>20</option><option>50</option></select>
+              条
+            </div>
+            <div style="display:flex;align-items:center;gap:16px">
+              <span class="pageInfo">共 3 条记录</span>
+              <div class="pageButtons">
+                <div class="pageBtn">‹</div>
+                <div class="pageBtn active">1</div>
+                <div class="pageBtn">›</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

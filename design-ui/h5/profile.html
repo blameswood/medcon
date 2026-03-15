@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>我的 - 个人中心</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== 个人中心页专属样式 ========== */
+
+    /* 标题栏 */
+    .profTitleBar {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    /* 个人信息卡片 */
+    .profContent {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px 16px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .profileCard {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 20px;
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+    }
+
+    .profileAvatar {
+      width: 56px;
+      height: 56px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .profileInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .profileName {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .profilePhone {
+      font-size: 13px;
+      color: var(--mutedForeground);
+    }
+
+    /* 菜单列表 */
+    .menuSection {
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      overflow: hidden;
+    }
+
+    .menuItem {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .menuItem:last-child {
+      border-bottom: none;
+    }
+
+    .menuItemLeft {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .menuItemIcon {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .menuItemLabel {
+      font-size: 15px;
+    }
+
+    .menuItemArrow {
+      color: var(--mutedForeground);
+      font-size: 14px;
+    }
+
+    /* 退出登录按钮 */
+    .logoutBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px;
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      color: #FF3B30;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      border: none;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <div class="pageWrap">
+
+    <!-- 状态栏 -->
+    <div class="statusBar">
+      <span>9:41</span>
+    </div>
+
+    <!-- 标题 -->
+    <div class="profTitleBar">我的</div>
+
+    <!-- 主内容 -->
+    <div class="profContent">
+
+      <!-- 用户信息卡片 -->
+      <div class="profileCard">
+        <div class="profileAvatar">张</div>
+        <div class="profileInfo">
+          <div class="profileName">张三</div>
+          <div class="profilePhone">13800138000</div>
+        </div>
+      </div>
+
+      <!-- 功能菜单组1 -->
+      <div class="menuSection">
+        <a class="menuItem" href="my-registration.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">📋</span>
+            <span class="menuItemLabel">我的报名</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+        <a class="menuItem" href="my-papers.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">📄</span>
+            <span class="menuItemLabel">我的投稿</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+        <a class="menuItem" href="my-hotels.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">🏨</span>
+            <span class="menuItemLabel">酒店预订</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+        <a class="menuItem" href="my-schedule.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">📅</span>
+            <span class="menuItemLabel">我的日程</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+      </div>
+
+      <!-- 功能菜单组2 -->
+      <div class="menuSection">
+        <a class="menuItem" href="my-profile.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">👤</span>
+            <span class="menuItemLabel">个人资料</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+        <a class="menuItem" href="help.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">❓</span>
+            <span class="menuItemLabel">帮助中心</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+        <a class="menuItem" href="help.html">
+          <div class="menuItemLeft">
+            <span class="menuItemIcon">📞</span>
+            <span class="menuItemLabel">联系我们</span>
+          </div>
+          <span class="menuItemArrow">›</span>
+        </a>
+      </div>
+
+      <!-- 退出登录 -->
+      <button class="logoutBtn" onclick="location.href='login.html'">退出登录</button>
+
+    </div>
+
+    <!-- 底部 Tab -->
+    <div class="tabBar">
+      <div class="tabItem" onclick="location.href='index.html'">
+        <span class="tabIcon">🏠</span>
+        <span>首页</span>
+      </div>
+      <div class="tabItem" onclick="location.href='schedule.html'">
+        <span class="tabIcon">📅</span>
+        <span>日程</span>
+      </div>
+      <div class="tabItem active" onclick="location.href='profile.html'">
+        <span class="tabIcon">👤</span>
+        <span>我的</span>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>酒店预订 - MedCon</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .scrollArea { padding: 16px; padding-bottom: 80px; }
+        
+        .hotelCard { background: #fff; border-radius: 16px; overflow: hidden; margin-bottom: 16px; border: 1px solid var(--border); box-shadow: var(--shadow); }
+        .hotelImg { width: 100%; height: 160px; object-fit: cover; background: #f1f5f9; }
+        .hotelInfo { padding: 16px; }
+        .hotelName { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .hotelDesc { font-size: 12px; color: var(--mutedForeground); margin-bottom: 12px; }
+        
+        /* 房型选择区 (H5) */
+        .roomBox { margin-top: 12px; padding: 12px; background: #f8fafc; border-radius: 12px; display: none; }
+        .roomBox.active { display: block; animation: fadeIn 0.3s; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        
+        .roomItem { 
+            background: #fff; border: 1px solid var(--border); border-radius: 10px; 
+            padding: 12px; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .roomItem.selected { border-color: var(--primary); background: #eff6ff; box-shadow: 0 0 0 1px var(--primary); }
+        .rn { font-size: 13px; font-weight: 600; }
+        .rp { font-size: 14px; font-weight: 700; color: var(--primary); }
+
+        /* 预订表单 */
+        .bookForm { margin-top: 12px; display: none; }
+        .bookForm.active { display: block; }
+        
+        .fGroup { margin-bottom: 12px; }
+        .fLabel { font-size: 13px; font-weight: 600; margin-bottom: 8px; display: flex; justify-content: space-between; align-items: center; width: 100%; }
+        .dateRow { display: flex; gap: 10px; margin-bottom: 12px; }
+        .dateRow .fGroup { flex: 1; margin-bottom: 0; }
+
+        /* 入住人 (H5) 优化为纵向堆叠，避免挤压 */
+        .occItem { 
+            background: #fff; border: 1px solid var(--border); border-radius: 10px; 
+            padding: 12px; position: relative; margin-bottom: 10px; 
+            display: flex; flex-direction: column; gap: 10px; 
+        }
+        .occInputGroup { display: flex; flex-direction: column; gap: 4px; }
+        .occInputGroup label { font-size: 11px; color: var(--mutedForeground); }
+        .btnDelH5 { position: absolute; top: -8px; right: -8px; width: 22px; height: 22px; background: #ef4444; color: #fff; border-radius: 50%; font-size: 14px; line-height: 20px; text-align: center; border: 2px solid #fff; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+
+        /* 底部操作条 */
+        .footerAction { 
+            position: fixed; bottom: 0; left: 50%; transform: translateX(-50%); 
+            width: 100%; max-width: 375px; background: #fff; 
+            padding: 12px 16px; border-top: 1px solid var(--border); 
+            display: flex; justify-content: space-between; align-items: center;
+            box-shadow: 0 -4px 12px rgba(0,0,0,0.05); z-index: 100;
+            display: none;
+        }
+        .footerAction .btnPrimary { width: auto; min-width: 140px; }
+        .totalText { font-size: 12px; color: var(--mutedForeground); line-height: 1.4; }
+        .totalVal { font-size: 18px; font-weight: 800; color: var(--primary); }
+    </style>
+</head>
+<body>
+    <div class="pageWrap">
+        <header class="titleBar">
+            <span class="backBtn" onclick="history.back()">←</span>
+            <span>酒店住宿</span>
+        </header>
+
+        <div class="scrollArea">
+            <div id="hList">
+                <div class="hotelCard">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800" class="hotelImg">
+                    <div class="hotelInfo">
+                        <div class="hotelName">西湖国际大酒店</div>
+                        <div class="hotelDesc">五星级 · 步行至会场约 5 分钟</div>
+                        <button class="btnPrimary" style="width:100%" onclick="hToggle(this, '西湖国际大酒店')">立即查看并预订</button>
+                        
+                        <div class="roomBox">
+                            <div class="roomList"></div>
+                            <div class="bookForm">
+                                <div class="dateRow">
+                                    <div class="fGroup"><label class="fLabel">入住日期</label><input type="date" class="fInput" value="2026-11-09" onchange="calcH()"></div>
+                                    <div class="fGroup"><label class="fLabel">退房日期</label><input type="date" class="fInput" value="2026-11-12" onchange="calcH()"></div>
+                                </div>
+                                <div class="fLabel" style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                                    入住人信息 <span style="color:var(--primary); font-size:11px;" onclick="addOH5(this)">+ 添加人员</span>
+                                </div>
+                                <div class="occListH5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hotelCard">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800" class="hotelImg">
+                    <div class="hotelInfo">
+                        <div class="hotelName">钱塘商务酒店</div>
+                        <div class="hotelDesc">商务精选 · 提供往返穿梭巴士</div>
+                        <button class="btnPrimary" style="width:100%" onclick="hToggle(this, '钱塘商务酒店')">立即查看并预订</button>
+                        
+                        <div class="roomBox">
+                            <div class="roomList"></div>
+                            <div class="bookForm">
+                                <div class="dateRow">
+                                    <div class="fGroup"><label class="fLabel">入住日期</label><input type="date" class="fInput" value="2026-11-09" onchange="calcH()"></div>
+                                    <div class="fGroup"><label class="fLabel">退房日期</label><input type="date" class="fInput" value="2026-11-12" onchange="calcH()"></div>
+                                </div>
+                                <div class="fLabel" style="display:flex; justify-content:space-between; margin-bottom:8px;">
+                                    入住人信息 <span style="color:var(--primary); font-size:11px;" onclick="addOH5(this)">+ 添加人员</span>
+                                </div>
+                                <div class="occListH5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footerAction" id="fAct">
+            <div class="totalText">预订总额 (含税): <br><span class="totalVal" id="hTotal">¥0</span></div>
+            <button class="btnPrimary" style="padding:0 24px; height:44px;" onclick="hConfirm()">确认预订</button>
+        </div>
+
+        <div class="tabBar">
+            <div class="tabItem" onclick="location.href='index.html'"><span class="tabIcon">🏠</span><span>首页</span></div>
+            <div class="tabItem" onclick="location.href='schedule.html'"><span class="tabIcon">📅</span><span>日程</span></div>
+            <div class="tabItem active" onclick="location.href='profile.html'"><span class="tabIcon">👤</span><span>我的</span></div>
+        </div>
+    </div>
+
+    <script>
+        const DATA = {
+            '西湖国际大酒店': [{n:'高级大床房', p:480}, {n:'高级双床房', p:520}, {n:'行政套房', p:1280}],
+            '钱塘商务酒店': [{n:'标准大床房', p:320}, {n:'标准双床房', p:350}]
+        };
+
+        let activeH = '', activeR = '', activeP = 0;
+
+        function hToggle(btn, name) {
+            activeH = name;
+            const card = btn.closest('.hotelCard');
+            const box = card.querySelector('.roomBox');
+            const list = box.querySelector('.roomList');
+            
+            // 关闭其它
+            document.querySelectorAll('.roomBox').forEach(b => b.classList.remove('active'));
+            box.classList.add('active');
+            
+            list.innerHTML = '';
+            DATA[name].forEach(r => {
+                const d = document.createElement('div');
+                d.className = 'roomItem';
+                d.onclick = () => {
+                    box.querySelectorAll('.roomItem').forEach(c => c.classList.remove('selected'));
+                    d.classList.add('selected');
+                    activeR = r.n; activeP = r.p;
+                    box.querySelector('.bookForm').classList.add('active');
+                    document.getElementById('fAct').style.display = 'flex';
+                    if(box.querySelector('.occListH5').children.length === 0) addOH5(box.querySelector('.occListH5'));
+                    calcH();
+                    setTimeout(() => box.querySelector('.bookForm').scrollIntoView({behavior:'smooth'}), 200);
+                };
+                d.innerHTML = `<span class="rn">${r.n}</span><span class="rp">¥${r.p}</span>`;
+                list.appendChild(d);
+            });
+            setTimeout(() => box.scrollIntoView({behavior:'smooth'}), 200);
+        }
+
+        function addOH5(el) {
+            // 修复逻辑：准确寻找 .occListH5 容器，避免插入到 fLabel 内部
+            const container = el.closest('.bookForm') || el.closest('.hotelInfo');
+            const list = container.querySelector('.occListH5');
+            const div = document.createElement('div');
+            div.className = 'occItem';
+            div.innerHTML = `
+                <div class="occInputGroup"><label>入住人姓名</label><input class="fInput" placeholder="请输入姓名" style="height:36px"></div>
+                <div class="occInputGroup"><label>证件号码</label><input class="fInput" placeholder="身份证 / 护照" style="height:36px"></div>
+                <div class="btnDelH5" onclick="this.parentElement.remove();calcH()">×</div>
+            `;
+            list.appendChild(div);
+        }
+
+        function calcH() {
+            if(!activeP) return;
+            const card = document.querySelector('.roomBox.active').closest('.hotelCard');
+            const inDate = new Date(card.querySelectorAll('.fInput')[0].value);
+            const outDate = new Date(card.querySelectorAll('.fInput')[1].value);
+            const n = Math.max(1, Math.round((outDate - inDate) / 86400000));
+            document.getElementById('hTotal').textContent = `¥${(activeP * n).toLocaleString()}`;
+        }
+
+        function hConfirm() {
+            alert(`主人，"${activeH}·${activeR}"预订成功！订单已保存至您的日程记录。`);
+            location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>

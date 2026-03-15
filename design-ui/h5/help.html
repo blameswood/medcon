@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>帮助中心 - H5</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== 帮助中心专属样式 ========== */
+    .helpHeader {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 16px 0;
+      height: 64px;
+      background: var(--surface);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .helpBackBtn {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .helpTitle {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .helpPlaceholder {
+      width: 20px;
+    }
+
+    /* 搜索框 */
+    .helpSearch {
+      padding: 16px;
+    }
+
+    .helpSearchInput {
+      width: 100%;
+      height: 40px;
+      border: 1px solid var(--border);
+      border-radius: var(--radiusMd);
+      padding: 0 16px;
+      font-size: 14px;
+      background: var(--surface);
+      outline: none;
+      font-family: var(--fontPrimary);
+    }
+
+    /* QA 列表 */
+    .qaList {
+      flex: 1;
+      overflow-y: auto;
+      padding: 0 16px 100px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .qaItem {
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      overflow: hidden;
+    }
+
+    .qaQuestion {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px;
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .qaArrow {
+      color: var(--mutedForeground);
+      transition: transform 0.2s;
+    }
+
+    .qaItem.open .qaArrow {
+      transform: rotate(90deg);
+    }
+
+    .qaAnswer {
+      display: none;
+      padding: 0 16px 16px;
+      font-size: 13px;
+      color: var(--mutedForeground);
+      line-height: 1.6;
+    }
+
+    .qaItem.open .qaAnswer {
+      display: block;
+    }
+
+    /* 底部联系栏 */
+    .helpBottom {
+      padding: 12px 16px 32px;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+
+    .helpContactBtn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radiusMd);
+      font-size: 15px;
+      width: 100%;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="pageWrap">
+
+    <!-- 顶部标题 -->
+    <div class="helpHeader">
+      <span class="helpBackBtn" onclick="history.back()">‹</span>
+      <span class="helpTitle">帮助中心</span>
+      <span class="helpPlaceholder"></span>
+    </div>
+
+    <!-- 搜索 -->
+    <div class="helpSearch">
+      <input class="helpSearchInput" type="text" placeholder="搜索常见问题...">
+    </div>
+
+    <!-- QA 列表 -->
+    <div class="qaList">
+
+      <div class="qaItem open" onclick="this.classList.toggle('open')">
+        <div class="qaQuestion">
+          <span>如何在线注册参加会议？</span>
+          <span class="qaArrow">›</span>
+        </div>
+        <div class="qaAnswer">
+          请在首页点击「立即报名」按钮，按照步骤依次填写基本信息、上传论文（如有）、选择住宿方案并完成在线支付即可。报名成功后会收到确认短信和邮件。
+        </div>
+      </div>
+
+      <div class="qaItem" onclick="this.classList.toggle('open')">
+        <div class="qaQuestion">
+          <span>参加会议需要缴纳多少费用？</span>
+          <span class="qaArrow">›</span>
+        </div>
+        <div class="qaAnswer">
+          费用因参会类别不同而异。普通参会代表：¥1,200；学生代表：¥600；演讲嘉宾：免费。费用包含会议资料、午餐券及茶歇。
+        </div>
+      </div>
+
+      <div class="qaItem" onclick="this.classList.toggle('open')">
+        <div class="qaQuestion">
+          <span>如何获取签到二维码？</span>
+          <span class="qaArrow">›</span>
+        </div>
+        <div class="qaAnswer">
+          报名并支付成功后，在「我的」-「我的报名」页面即可查看入场签到凭证二维码。现场签到时出示该二维码即可完成入场。
+        </div>
+      </div>
+
+      <div class="qaItem" onclick="this.classList.toggle('open')">
+        <div class="qaQuestion">
+          <span>会议期间的餐饮如何安排？</span>
+          <span class="qaArrow">›</span>
+        </div>
+        <div class="qaAnswer">
+          会议提供工作午餐和茶歇，凭餐券码入场就餐。餐券码同样在「我的报名」页面中展示。
+        </div>
+      </div>
+
+      <div class="qaItem" onclick="this.classList.toggle('open')">
+        <div class="qaQuestion">
+          <span>如何取消报名并申请退款？</span>
+          <span class="qaArrow">›</span>
+        </div>
+        <div class="qaAnswer">
+          会议开始前 7 天可申请全额退款，3-7 天退 50%，3 天内不可退款。请联系大会组委会邮箱或拨打客服热线进行办理。
+        </div>
+      </div>
+
+      <div class="qaItem" onclick="this.classList.toggle('open')">
+        <div class="qaQuestion">
+          <span>论文投稿有什么要求？</span>
+          <span class="qaArrow">›</span>
+        </div>
+        <div class="qaAnswer">
+          论文需为未公开发表的原创性学术论文，Word 或 PDF 格式，文件不超过 20MB。投稿后将进入专家评审流程，结果会通过站内消息通知。
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 底部联系按钮 -->
+    <div class="helpBottom">
+      <button class="helpContactBtn">📞 联系客服</button>
+    </div>
+
+  </div>
+</body>
+</html>

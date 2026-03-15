@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的投稿 - 个人中心</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .profileLayout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 60px 80px; max-width: 1440px; margin: 0 auto; }
+        .sidebar { background: #fff; border-radius: 20px; padding: 24px; border: 1px solid var(--border); height: fit-content; }
+        .sideNav { display: flex; flex-direction: column; gap: 8px; }
+        .sideNavItem { padding: 12px 16px; border-radius: 12px; color: var(--mutedForeground); transition: all 0.2s; display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .sideNavItem:hover { background: #f8fafc; color: var(--primary); }
+        .sideNavItem.active { background: #eff6ff; color: var(--primary); }
+        
+        .mainArea { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--shadowSm); border: 1px solid var(--border); }
+        .paperTable { width: 100%; border-collapse: collapse; margin-top: 24px; }
+        .paperTable th { text-align: left; padding: 16px; border-bottom: 2px solid var(--border); color: var(--mutedForeground); font-weight: 600; font-size: 13px; }
+        .paperTable td { padding: 20px 16px; border-bottom: 1px solid var(--border); font-size: 14px; }
+        .statusTag { padding: 4px 10px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .statusPending { background: #fff7ed; color: #ea580c; }
+        .statusPassed { background: #ecfdf5; color: #059669; }
+    </style>
+</head>
+<body>
+    <header class="webHeader">
+        <div class="webLogo">🌐 MedCon 2026</div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem">论文投稿</a>
+            <a href="hotel.html" class="webNavItem">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <a href="index.html" class="langSwitch">返回主页</a>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" style="width:40px;height:40px;border-radius:20px;border:2px solid var(--primary);">
+        </div>
+    </header>
+
+    <main class="profileLayout">
+        <aside class="sidebar">
+            <div class="sideNav">
+                <a href="profile.html" class="sideNavItem">📋 我的报名</a>
+                <a href="my-papers.html" class="sideNavItem active">📄 我的投稿</a>
+                <a href="my-hotels.html" class="sideNavItem">🏨 酒店预订</a>
+                <a href="my-schedule.html" class="sideNavItem">📅 我的日程</a>
+                <a href="my-profile.html" class="sideNavItem">👤 个人资料</a>
+                <div style="margin: 12px 0; border-top: 1px solid var(--border);"></div>
+                <a href="help.html" class="sideNavItem">❓ 帮助中心</a>
+                <a href="help.html#contact" class="sideNavItem">📞 联系我们</a>
+                <a href="index.html" class="sideNavItem" style="color: #ef4444;">🚪 退出登录</a>
+            </div>
+        </aside>
+
+        <section class="mainArea">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <h2>我的论文投稿</h2>
+                <button class="btnLoginWeb" onclick="location.href='paper.html'">+ 提交新论文</button>
+            </div>
+            
+            <table class="paperTable">
+                <thead>
+                    <tr>
+                        <th>论文标题</th>
+                        <th>投稿编号</th>
+                        <th>投稿日期</th>
+                        <th>状态</th>
+                        <th>操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="fontBold">人工智能在临床诊断中的应用研究</td>
+                        <td class="textMuted">#PAP-20260312</td>
+                        <td>2026-03-12</td>
+                        <td><span class="statusTag statusPending">评审中</span></td>
+                        <td><a href="javascript:void(0)" class="textPrimary">查看详情</a></td>
+                    </tr>
+                    <tr>
+                        <td class="fontBold">抗肿瘤新药的临床二期试验分析报告</td>
+                        <td class="textMuted">#PAP-20260215</td>
+                        <td>2026-02-15</td>
+                        <td><span class="statusTag statusPassed">已录用</span></td>
+                        <td><a href="javascript:void(0)" class="textPrimary">打印凭证</a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+</body>
+</html>

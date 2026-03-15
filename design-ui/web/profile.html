@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的报名 - 个人中心</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        /* ========== 个人中心通用布局（与子页面统一） ========== */
+        .profileLayout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 60px 80px; max-width: 1440px; margin: 0 auto; }
+        .sidebar { background: #fff; border-radius: 20px; padding: 24px; border: 1px solid var(--border); height: fit-content; }
+        .sideNav { display: flex; flex-direction: column; gap: 8px; }
+        .sideNavItem { padding: 12px 16px; border-radius: 12px; color: var(--mutedForeground); transition: all 0.2s; display: flex; align-items: center; gap: 12px; font-weight: 500; }
+        .sideNavItem:hover { background: #f8fafc; color: var(--primary); }
+        .sideNavItem.active { background: #eff6ff; color: var(--primary); }
+
+        .mainArea { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--shadowSm); border: 1px solid var(--border); }
+
+        /* 用户信息头 */
+        .pcUserBanner {
+            display: flex; align-items: center; gap: 20px;
+            padding-bottom: 32px; margin-bottom: 32px; border-bottom: 1px solid var(--border);
+        }
+        .pcAvatarLg {
+            width: 64px; height: 64px; border-radius: 50%;
+            background: var(--primaryGradient); color: #fff;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 22px; font-weight: 700; flex-shrink: 0;
+        }
+        .pcUserName { font-size: 18px; font-weight: 600; margin-bottom: 4px; }
+        .pcUserPhone { font-size: 13px; color: var(--mutedForeground); }
+
+        /* 报名信息卡 */
+        .pcInfoCard {
+            background: var(--background); border-radius: 16px;
+            padding: 28px 32px; margin-bottom: 24px;
+        }
+        .pcInfoHeader {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border);
+        }
+        .pcInfoRow { display: flex; align-items: center; gap: 24px; padding: 8px 0; }
+        .pcInfoLabel { width: 100px; font-size: 14px; color: var(--mutedForeground); flex-shrink: 0; }
+        .pcInfoValue { font-size: 14px; font-weight: 500; }
+
+        /* 签到/就餐 双卡片 */
+        .pcQrRow { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .pcQrCard {
+            background: var(--background); border-radius: 16px; padding: 28px;
+            display: flex; flex-direction: column; align-items: center; gap: 16px;
+        }
+        .pcQrTitle { font-size: 16px; font-weight: 600; }
+        .pcQrIcon { font-size: 64px; line-height: 1; margin: 12px 0; }
+        .pcQrCode { font-size: 13px; color: var(--mutedForeground); letter-spacing: 1px; }
+
+        /* 状态标签 */
+        .badge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .badgeSuccess { background: #ecfdf5; color: #059669; }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header class="webHeader">
+        <div class="webLogo">🌐 MedCon 2026</div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem">论文投稿</a>
+            <a href="hotel.html" class="webNavItem">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <a href="index.html" class="langSwitch">返回主页</a>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" style="width:40px;height:40px;border-radius:20px;border:2px solid var(--primary);">
+        </div>
+    </header>
+
+    <main class="profileLayout">
+
+        <!-- 统一侧边栏 -->
+        <aside class="sidebar">
+            <div class="sideNav">
+                <a href="profile.html" class="sideNavItem active">📋 我的报名</a>
+                <a href="my-papers.html" class="sideNavItem">📄 我的投稿</a>
+                <a href="my-hotels.html" class="sideNavItem">🏨 酒店预订</a>
+                <a href="my-schedule.html" class="sideNavItem">📅 我的日程</a>
+                <a href="my-profile.html" class="sideNavItem">👤 个人资料</a>
+                <div style="margin: 12px 0; border-top: 1px solid var(--border);"></div>
+                <a href="help.html" class="sideNavItem">❓ 帮助中心</a>
+                <a href="help.html#contact" class="sideNavItem">📞 联系我们</a>
+                <a href="index.html" class="sideNavItem" style="color: #ef4444;">🚪 退出登录</a>
+            </div>
+        </aside>
+
+        <!-- 右侧内容 -->
+        <section class="mainArea">
+
+            <!-- 用户信息 -->
+            <div class="pcUserBanner">
+                <div class="pcAvatarLg">张</div>
+                <div>
+                    <div class="pcUserName">张三</div>
+                    <div class="pcUserPhone">13800138000 · 浙江大学医学院附属第一医院</div>
+                </div>
+            </div>
+
+            <h2 style="margin-bottom: 24px; font-size: 20px;">我的报名</h2>
+
+            <!-- 报名信息卡 -->
+            <div class="pcInfoCard">
+                <div class="pcInfoHeader">
+                    <span style="font-size:16px;font-weight:600;">2026 全球医疗科技博览</span>
+                    <span class="badge badgeSuccess">已完成</span>
+                </div>
+                <div class="pcInfoRow">
+                    <span class="pcInfoLabel">参会人</span>
+                    <span class="pcInfoValue">张三 (13800138000)</span>
+                </div>
+                <div class="pcInfoRow">
+                    <span class="pcInfoLabel">报名类别</span>
+                    <span class="pcInfoValue">普通参会代表</span>
+                </div>
+                <div class="pcInfoRow">
+                    <span class="pcInfoLabel">支付金额</span>
+                    <span class="pcInfoValue">¥ 1,200 (微信支付)</span>
+                </div>
+                <div class="pcInfoRow">
+                    <span class="pcInfoLabel">报名时间</span>
+                    <span class="pcInfoValue">2026-03-01 14:32</span>
+                </div>
+            </div>
+
+            <!-- 签到码 & 就餐码 -->
+            <div class="pcQrRow">
+                <div class="pcQrCard">
+                    <div class="pcQrTitle">入场签到凭证</div>
+                    <span class="pcQrIcon">📱</span>
+                    <span class="pcQrCode">签到码: REG-48293</span>
+                </div>
+                <div class="pcQrCard">
+                    <div class="pcQrTitle">会议餐饮凭证</div>
+                    <span class="pcQrIcon">🍽️</span>
+                    <span class="pcQrCode">餐券码: FOOD-99214</span>
+                </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+</body>
+</html>

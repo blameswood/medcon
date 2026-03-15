@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>投稿评审 - 管理后台</title>
+  <link rel="stylesheet" href="css/common.css">
+</head>
+<body>
+  <div class="adminLayout">
+    <aside class="adminSidebar">
+      <div class="sidebarLogo"><span>✦</span><span>会议管理后台</span></div>
+      <nav class="sidebarNav">
+        <a class="sidebarItem" href="index.html"><span class="sidebarIcon">📊</span> 工作台</a>
+        <a class="sidebarItem" href="conference.html"><span class="sidebarIcon">🎤</span> 会议管理</a>
+        <a class="sidebarItem" href="attendees.html"><span class="sidebarIcon">👥</span> 参会管理</a>
+        <a class="sidebarItem active" href="javascript:void(0)"><span class="sidebarIcon">📄</span> 投稿评审</a>
+        <a class="sidebarItem" href="hotel.html"><span class="sidebarIcon">🏨</span> 住宿管理</a>
+        <div class="sidebarDivider"></div>
+        <a class="sidebarItem" href="settings.html"><span class="sidebarIcon">⚙️</span> 系统设置</a>
+      </nav>
+    </aside>
+
+    <div class="adminRight">
+      <div class="adminTopbar">
+        <span class="topbarTitle">投稿评审</span>
+        <div class="topbarRight">
+          <span style="font-size:13px;color:var(--mutedForeground)">管理员</span>
+          <div class="topbarAvatar">A</div>
+        </div>
+      </div>
+
+      <div class="adminContent">
+        <div class="tableCard">
+          <div class="tableToolbar">
+            <div style="display:flex;gap:12px;align-items:center">
+              <input class="searchInput" placeholder="搜索论文标题/作者...">
+              <button class="btnSmPrimary">搜索</button>
+            </div>
+            <button class="btnSmOutline">导出列表</button>
+          </div>
+
+          <table class="dataTable">
+            <thead>
+              <tr>
+                <th>论文标题</th>
+                <th>作者</th>
+                <th>投稿时间</th>
+                <th>评审状态</th>
+                <th>评分</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>基于深度学习的肺部CT影像辅助诊断</td>
+                <td>张三</td>
+                <td>2026-09-15</td>
+                <td><span class="statusBadge statusActive">已通过</span></td>
+                <td>92</td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">查看</a></td>
+              </tr>
+              <tr>
+                <td>多模态医学影像融合技术研究</td>
+                <td>李四</td>
+                <td>2026-09-18</td>
+                <td><span class="statusBadge statusPending">评审中</span></td>
+                <td>-</td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">查看</a></td>
+              </tr>
+              <tr>
+                <td>AI药物分子设计的可解释性研究</td>
+                <td>王五</td>
+                <td>2026-09-20</td>
+                <td><span class="statusBadge statusDraft">待分配</span></td>
+                <td>-</td>
+                <td><a href="javascript:void(0)" style="color:var(--primary);font-size:13px">分配评审</a></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="pagination">
+            <div class="pageSizeSelect">
+              每页显示
+              <select><option>10</option><option>20</option><option>50</option></select>
+              条
+            </div>
+            <div style="display:flex;align-items:center;gap:16px">
+              <span class="pageInfo">共 358 条记录</span>
+              <div class="pageButtons">
+                <div class="pageBtn">‹</div>
+                <div class="pageBtn active">1</div>
+                <div class="pageBtn">2</div>
+                <div class="pageBtn">...</div>
+                <div class="pageBtn">36</div>
+                <div class="pageBtn">›</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

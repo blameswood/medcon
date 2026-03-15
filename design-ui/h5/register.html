@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>注册 - H5</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== 注册页专属样式 ========== */
+    .regHeader {
+      padding: 80px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .regTitle {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .regSubtitle {
+      font-size: 14px;
+      color: var(--mutedForeground);
+    }
+
+    .regForm {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 0 24px;
+    }
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .formLabel {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .formInput {
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radiusMd);
+      padding: 0 16px;
+      font-size: 15px;
+      background: var(--surface);
+      outline: none;
+      font-family: var(--fontPrimary);
+    }
+
+    .formInput:focus {
+      border-color: var(--primary);
+    }
+
+    /* 验证码行 */
+    .codeRow {
+      display: flex;
+      gap: 12px;
+    }
+
+    .codeRow .formInput {
+      flex: 1;
+    }
+
+    .codeBtn {
+      padding: 0 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: var(--radiusMd);
+      font-size: 13px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    /* 操作区 */
+    .regActions {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 40px 24px;
+      align-items: center;
+    }
+
+    /* 底部 */
+    .regFooter {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 40px;
+      align-items: center;
+    }
+
+    .loginTip {
+      font-size: 13px;
+      color: var(--mutedForeground);
+    }
+
+    .loginTip a {
+      color: var(--primary);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="pageWrap">
+
+    <div class="regHeader">
+      <div class="regTitle">创建账号</div>
+      <div class="regSubtitle">注册参加 2026 全球医疗科技博览</div>
+    </div>
+
+    <div class="regForm">
+      <div class="formGroup">
+        <label class="formLabel">姓名</label>
+        <input class="formInput" type="text" placeholder="请输入真实姓名">
+      </div>
+      <div class="formGroup">
+        <label class="formLabel">手机号码</label>
+        <input class="formInput" type="tel" placeholder="请输入手机号码">
+      </div>
+      <div class="formGroup">
+        <label class="formLabel">验证码</label>
+        <div class="codeRow">
+          <input class="formInput" type="text" placeholder="请输入验证码">
+          <button class="codeBtn">获取验证码</button>
+        </div>
+      </div>
+      <div class="formGroup">
+        <label class="formLabel">设置密码</label>
+        <input class="formInput" type="password" placeholder="请设置密码（6-20位）">
+      </div>
+    </div>
+
+    <div class="regActions">
+      <button class="btnPrimary" onclick="location.href='login.html'">注册</button>
+    </div>
+
+    <div class="regFooter">
+      <div class="loginTip">
+        已有账号？<a href="login.html">立即登录</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

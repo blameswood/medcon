@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>论文投稿 - MedCon 学术会议系统</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .paperHero { padding: 60px 80px; background: linear-gradient(rgba(15, 23, 42, 0.8), rgba(15, 23, 42, 0.8)), url('https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?q=80&w=1600'); background-size: cover; color: #fff; text-align: center; }
+        .paperHero h1 { font-size: 40px; margin-bottom: 16px; }
+        .paperContent { display: grid; grid-template-columns: 1fr 320px; gap: 40px; padding: 60px 80px; max-width: 1440px; margin: 0 auto; }
+        .formCard { background: #fff; padding: 40px; border-radius: 20px; box-shadow: var(--shadowLg); }
+        .sideCard { background: #fff; padding: 24px; border-radius: 16px; border: 1px solid var(--border); height: fit-content; }
+        .sideTitle { font-size: 16px; font-weight: 600; margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+        .timelineItem { border-left: 2px solid var(--border); padding-left: 20px; position: relative; margin-bottom: 24px; }
+        .timelineItem::after { content: ""; position: absolute; left: -7px; top: 0; width: 12px; height: 12px; border-radius: 50%; background: #fff; border: 2px solid var(--primary); }
+    </style>
+</head>
+<body>
+    <header class="webHeader">
+        <div class="webLogo">
+            <span style="font-size:24px;">🌐</span>
+            MedCon 2026
+        </div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem active">论文投稿</a>
+            <a href="hotel.html" class="webNavItem">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <div class="langSwitch">EN / 中文</div>
+            <a href="profile.html" class="btnLoginWeb">进入个人中心</a>
+        </div>
+    </header>
+
+    <section class="paperHero">
+        <h1>2026 国际临床医学大会 - 征稿中心</h1>
+        <p>诚邀全球医学研究者提交最新研究成果，共享学术盛宴</p>
+    </section>
+
+    <main class="paperContent">
+        <div class="formCard">
+            <h2 style="margin-bottom: 32px;">在线提交论文</h2>
+            <div class="formGroup" style="margin-bottom: 24px;">
+                <label class="formLabel">论文标题</label>
+                <input type="text" class="formInput" placeholder="请输入完整论文标题">
+            </div>
+            <div class="formGroup" style="margin-bottom: 24px;">
+                <label class="formLabel">研究方向</label>
+                <select class="formInput">
+                    <option>临床研究</option>
+                    <option>基础医学</option>
+                    <option>创新医疗器械</option>
+                    <option>数字医疗</option>
+                </select>
+            </div>
+            <div class="formGroup" style="margin-bottom: 24px;">
+                <label class="formLabel">摘要 (500字以内)</label>
+                <textarea class="formInput" style="height: 160px; padding: 12px; resize: none;"></textarea>
+            </div>
+            <div class="formGroup" style="margin-bottom: 32px;">
+                <label class="formLabel">文件上传</label>
+                <div style="border: 2px dashed var(--border); border-radius: 12px; padding: 40px; text-align: center;">
+                    <span style="font-size: 32px; display: block; margin-bottom: 12px;">📁</span>
+                    <button class="btnRegWeb" style="margin-bottom: 8px;">选择文件</button>
+                    <p class="textMuted">支持 PDF, Word 格式文件</p>
+                </div>
+            </div>
+            <button class="btnPrimaryWeb" style="height: 52px; font-size: 16px;">立即提交</button>
+        </div>
+
+        <aside>
+            <div class="sideCard" style="margin-bottom: 24px;">
+                <div class="sideTitle">📅 重要时间点</div>
+                <div class="timelineItem">
+                    <div class="textSm textMuted">2026-01-01</div>
+                    <div class="textBase fontBold">征稿开始</div>
+                </div>
+                <div class="timelineItem">
+                    <div class="textSm textMuted">2026-03-31</div>
+                    <div class="textBase fontBold" style="color: #ef4444;">投稿截止</div>
+                </div>
+                <div class="timelineItem" style="border: none;">
+                    <div class="textSm textMuted">2026-04-30</div>
+                    <div class="textBase fontBold">评审结果公布</div>
+                </div>
+            </div>
+            <div class="sideCard">
+                <div class="sideTitle">💡 投稿指南</div>
+                <ul class="textSm textMuted" style="padding-left: 20px; line-height: 2;">
+                    <li>全文不超过 5000 字</li>
+                    <li>需包含作者简介及联系方式</li>
+                    <li>原创作品，未在其他平台发表</li>
+                </ul>
+            </div>
+        </aside>
+    </main>
+
+    <footer class="webFooter">
+        <p>© 2026 MedCon 国际临床医学大会. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>

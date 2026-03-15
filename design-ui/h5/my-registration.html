@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>我的报名 - H5</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== 我的报名详情页专属样式 ========== */
+
+    .mrHeader {
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 16px;
+    }
+
+    .mrBackBtn {
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .mrTitle {
+      font-size: 17px;
+      font-weight: 600;
+    }
+
+    .mrPlaceholder {
+      width: 20px;
+    }
+
+    /* 报名内容 */
+    .mrBody {
+      flex: 1;
+      overflow-y: auto;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    /* 会议信息卡片 */
+    .mrInfoCard {
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mrCardRow {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .mrConfName {
+      font-size: 15px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    .mrStatusBadge {
+      display: inline-flex;
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 12px;
+      background: #dcfce7;
+      color: #16a34a;
+      font-weight: 500;
+    }
+
+    .mrInfoRow {
+      display: flex;
+      gap: 12px;
+      font-size: 13px;
+    }
+
+    .mrInfoLabel {
+      color: var(--mutedForeground);
+      white-space: nowrap;
+    }
+
+    .mrInfoValue {
+      color: var(--foreground);
+    }
+
+    /* 二维码凭证卡片 */
+    .mrQrCard {
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .mrQrTitle {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .mrQrBox {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      height: 160px;
+      background: #f8fafc;
+      border-radius: 8px;
+    }
+
+    .mrQrIcon {
+      font-size: 64px;
+      line-height: 1;
+    }
+
+    .mrQrCode {
+      font-size: 12px;
+      color: var(--mutedForeground);
+    }
+
+    /* 核销记录卡片 */
+    .mrRecordCard {
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .mrRecordTitle {
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .mrRecordItem {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 12px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .mrRecordItem:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    .mrRecordLeft {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .mrRecordName {
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .mrRecordTime {
+      font-size: 12px;
+      color: var(--mutedForeground);
+    }
+
+    .mrRecordStatus {
+      font-size: 12px;
+      color: #16a34a;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="pageWrap">
+
+    <!-- 标题栏 -->
+    <div class="mrHeader">
+      <span class="mrBackBtn" onclick="history.back()">‹</span>
+      <span class="mrTitle">我的报名</span>
+      <span class="mrPlaceholder"></span>
+    </div>
+
+    <!-- 主内容 -->
+    <div class="mrBody">
+
+      <!-- 会议信息卡片 -->
+      <div class="mrInfoCard">
+        <div class="mrCardRow">
+          <span class="mrConfName">2026 全球医疗科技博览</span>
+          <span class="mrStatusBadge">已完成</span>
+        </div>
+        <div class="divider"></div>
+        <div class="mrInfoRow">
+          <span class="mrInfoLabel">参会人</span>
+          <span class="mrInfoValue">张三 (13800138000)</span>
+        </div>
+        <div class="mrInfoRow">
+          <span class="mrInfoLabel">报名类别</span>
+          <span class="mrInfoValue">普通参会代表</span>
+        </div>
+        <div class="mrInfoRow">
+          <span class="mrInfoLabel">支付金额</span>
+          <span class="mrInfoValue">¥ 1,200 (微信支付)</span>
+        </div>
+      </div>
+
+      <!-- 入场签到凭证 -->
+      <div class="mrQrCard">
+        <div class="mrQrTitle">入场凭证 (签到二维码)</div>
+        <div class="mrQrBox">
+          <span class="mrQrIcon">📱</span>
+          <span class="mrQrCode">签到码: REG-48293</span>
+        </div>
+      </div>
+
+      <!-- 餐饮凭证 -->
+      <div class="mrQrCard">
+        <div class="mrQrTitle">餐饮凭证 (餐券码)</div>
+        <div class="mrQrBox">
+          <span class="mrQrIcon">🍽️</span>
+          <span class="mrQrCode">餐券码: FOOD-99214</span>
+        </div>
+      </div>
+
+      <!-- 核销记录 -->
+      <div class="mrRecordCard">
+        <div class="mrRecordTitle">扫码核销记录</div>
+        <div class="mrRecordItem">
+          <div class="mrRecordLeft">
+            <span class="mrRecordName">主会场签到 (入场)</span>
+            <span class="mrRecordTime">2026-11-10 18:30:45</span>
+          </div>
+          <span class="mrRecordStatus">✓ 核销成功</span>
+        </div>
+        <div class="mrRecordItem">
+          <div class="mrRecordLeft">
+            <span class="mrRecordName">就餐核销 (午餐)</span>
+            <span class="mrRecordTime">2026-11-10 12:15:21</span>
+          </div>
+          <span class="mrRecordStatus">✓ 核销成功</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- 底部 Tab -->
+    <div class="tabBar">
+      <div class="tabItem" onclick="location.href='index.html'"><span class="tabIcon">🏠</span><span>首页</span></div>
+      <div class="tabItem" onclick="location.href='schedule.html'"><span class="tabIcon">📅</span><span>日程</span></div>
+      <div class="tabItem active" onclick="location.href='profile.html'"><span class="tabIcon">👤</span><span>我的</span></div>
+    </div>
+  </div>
+</body>
+</html>

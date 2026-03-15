@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我的酒店订单 - MedCon 2026</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .profileLayout { display: grid; grid-template-columns: 280px 1fr; gap: 40px; padding: 60px 80px; max-width: 1440px; margin: 0 auto; }
+        .sidebar { background: #fff; border-radius: 20px; padding: 24px; border: 1px solid var(--border); height: fit-content; }
+        .sideNav { display: flex; flex-direction: column; gap: 8px; }
+        .sideNavItem { padding: 12px 16px; border-radius: 12px; color: var(--mutedForeground); transition: all 0.2s; display: flex; align-items: center; gap: 12px; font-weight: 500; text-decoration: none; }
+        .sideNavItem:hover { background: #f8fafc; color: var(--primary); }
+        .sideNavItem.active { background: #eff6ff; color: var(--primary); }
+        
+        .mainArea { background: #fff; border-radius: 24px; padding: 40px; box-shadow: var(--shadowSm); border: 1px solid var(--border); }
+        
+        .orderGrid { display: flex; flex-direction: column; gap: 24px; }
+        .orderCard { 
+            display: flex; gap: 24px; padding: 24px; border-radius: 20px; 
+            border: 1px solid var(--border); transition: all 0.3s;
+            position: relative; overflow: hidden;
+        }
+        .orderCard:hover { border-color: var(--primary); box-shadow: var(--shadowMd); }
+        
+        .orderImg { width: 180px; height: 120px; border-radius: 16px; object-fit: cover; background: #f1f5f9; }
+        .orderContent { flex: 1; display: flex; flex-direction: column; }
+        .orderTop { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+        .hotelName { font-size: 20px; font-weight: 700; margin-bottom: 4px; }
+        .hotelLoc { font-size: 13px; color: var(--mutedForeground); }
+        
+        .statusBadge { padding: 4px 12px; border-radius: 20px; font-size: 12px; font-weight: 600; }
+        .statusSuccess { background: #ecfdf5; color: #10b981; }
+        
+        .orderSpecs { 
+            display: flex; gap: 32px; padding: 16px; background: #f8fafc; border-radius: 12px; margin: 12px 0;
+        }
+        .specItem { display: flex; flex-direction: column; gap: 4px; }
+        .specLabel { font-size: 11px; color: var(--mutedForeground); text-transform: uppercase; letter-spacing: 0.5px; }
+        .specValue { font-size: 14px; font-weight: 600; }
+
+        .orderFooter { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 16px; }
+        .priceInfo { font-size: 14px; color: var(--mutedForeground); }
+        .priceVal { font-size: 22px; font-weight: 800; color: var(--primary); margin-left: 8px; }
+
+        .btnSet { display: flex; gap: 12px; }
+        .btnAction { padding: 8px 18px; border-radius: 10px; font-size: 13px; font-weight: 600; cursor: pointer; border: 1px solid var(--border); background: #fff; transition: all 0.2s; }
+        .btnAction:hover { border-color: var(--primary); color: var(--primary); }
+        .btnPrimarySet { background: var(--primary); color: #fff; border: none; }
+        .btnPrimarySet:hover { opacity: 0.9; color: #fff; }
+    </style>
+</head>
+<body>
+    <header class="webHeader">
+        <div class="webLogo" onclick="location.href='index.html'" style="cursor:pointer">🌐 MedCon 2026</div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem">论文投稿</a>
+            <a href="hotel.html" class="webNavItem active">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <a href="index.html" class="langSwitch">返回主页</a>
+            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Felix" alt="Avatar" style="width:40px;height:40px;border-radius:20px;border:2px solid var(--primary);">
+        </div>
+    </header>
+
+    <main class="profileLayout">
+        <aside class="sidebar">
+            <div class="sideNav">
+                <a href="profile.html" class="sideNavItem">📋 我的报名</a>
+                <a href="my-papers.html" class="sideNavItem">📄 我的投稿</a>
+                <a href="my-hotels.html" class="sideNavItem active">🏨 酒店预订</a>
+                <a href="my-schedule.html" class="sideNavItem">📅 我的日程</a>
+                <a href="my-profile.html" class="sideNavItem">👤 个人资料</a>
+                <div style="margin: 12px 0; border-top: 1px solid var(--border);"></div>
+                <a href="help.html" class="sideNavItem">❓ 帮助中心</a>
+                <a href="help.html#contact" class="sideNavItem">📞 联系我们</a>
+                <a href="index.html" class="sideNavItem" style="color: #ef4444;">🚪 退出登录</a>
+            </div>
+        </aside>
+
+        <section class="mainArea">
+            <h2 style="margin-bottom: 32px; font-size: 24px; font-weight: 800;">酒店订单</h2>
+            
+            <div class="orderGrid">
+                <!-- 订单卡片 1 -->
+                <div class="orderCard">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=400" alt="Hotel" class="orderImg">
+                    <div class="orderContent">
+                        <div class="orderTop">
+                            <div>
+                                <h3 class="hotelName">西湖国际大酒店</h3>
+                                <div class="hotelLoc">五星级 · 距会场 200m</div>
+                            </div>
+                            <span class="statusBadge statusSuccess">预订成功</span>
+                        </div>
+                        
+                        <div class="orderSpecs">
+                            <div class="specItem">
+                                <span class="specLabel">预订房型</span>
+                                <span class="specValue">高级大床房 (含双早)</span>
+                            </div>
+                            <div class="specItem">
+                                <span class="specLabel">入住周期</span>
+                                <span class="specValue">2026-11-09 至 2026-11-12</span>
+                            </div>
+                            <div class="specItem">
+                                <span class="specLabel">入住时长</span>
+                                <span class="specValue">3 晚</span>
+                            </div>
+                        </div>
+
+                        <div class="orderFooter">
+                            <div class="priceInfo">订单实付 <span class="priceVal">¥1,440</span></div>
+                            <div class="btnSet">
+                                <button class="btnAction">取消订单</button>
+                                <button class="btnAction btnPrimarySet" onclick="location.href='hotel.html'">再次预订</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 订单卡片 2 -->
+                <div class="orderCard">
+                    <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=400" alt="Hotel" class="orderImg">
+                    <div class="orderContent">
+                        <div class="orderTop">
+                            <div>
+                                <h3 class="hotelName">钱塘商务酒店</h3>
+                                <div class="hotelLoc">商务精选 · CBD核心区</div>
+                            </div>
+                            <span class="statusBadge" style="background:#f1f5f9; color:var(--mutedForeground);">已完成</span>
+                        </div>
+                        
+                        <div class="orderSpecs">
+                            <div class="specItem">
+                                <span class="specLabel">预订房型</span>
+                                <span class="specValue">标准双床房</span>
+                            </div>
+                            <div class="specItem">
+                                <span class="specLabel">入住周期</span>
+                                <span class="specValue">2026-11-05 至 2026-11-06</span>
+                            </div>
+                            <div class="specItem">
+                                <span class="specLabel">入住时长</span>
+                                <span class="specValue">1 晚</span>
+                            </div>
+                        </div>
+
+                        <div class="orderFooter">
+                            <div class="priceInfo">订单实付 <span class="priceVal">¥320</span></div>
+                            <div class="btnSet">
+                                <button class="btnAction">下载发票</button>
+                                <button class="btnAction btnPrimarySet" onclick="location.href='hotel.html'">预约接机</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+</body>
+</html>

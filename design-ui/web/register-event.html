@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>参会报名 - 2026 全球医疗科技博览</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .regPage { max-width: 800px; margin: 0 auto; padding: 48px 40px 100px; }
+
+        /* ========== 步骤进度条（5步） ========== */
+        .stepBar { display: flex; align-items: center; justify-content: center; gap: 0; margin-bottom: 40px; }
+        .stepItem { display: flex; align-items: center; gap: 8px; }
+        .stepCircle {
+            width: 32px; height: 32px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 13px; font-weight: 700;
+            background: #e2e8f0; color: #94a3b8; transition: all 0.3s; flex-shrink: 0;
+        }
+        .stepCircle.active { background: var(--primary); color: #fff; }
+        .stepCircle.done { background: #22c55e; color: #fff; }
+        .stepLabel { font-size: 13px; font-weight: 500; color: var(--mutedForeground); white-space: nowrap; }
+        .stepLabel.active { color: var(--foreground); font-weight: 600; }
+        .stepLine { width: 48px; height: 2px; background: #e2e8f0; margin: 0 8px; flex-shrink: 0; }
+        .stepLine.done { background: #22c55e; }
+
+        /* ========== 表单卡片 ========== */
+        .regCard { background: #fff; border-radius: 20px; padding: 36px; border: 1px solid var(--border); box-shadow: var(--shadowSm); }
+        .regTitle { font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+        .regSubtitle { font-size: 13px; color: var(--mutedForeground); margin-bottom: 28px; }
+        .formRow { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 20px; }
+        .formGroupFull { margin-bottom: 20px; }
+
+        /* ========== 参会类型 ========== */
+        .typeGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 28px; }
+        .typeCard {
+            border: 2px solid var(--border); border-radius: 14px; padding: 20px;
+            cursor: pointer; transition: all 0.2s; position: relative;
+        }
+        .typeCard:hover { border-color: var(--primary); }
+        .typeCard.selected { border-color: var(--primary); background: #eff6ff; }
+        .typeCard.selected::after {
+            content: '✓'; position: absolute; top: 10px; right: 10px;
+            width: 22px; height: 22px; border-radius: 50%; background: var(--primary); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;
+        }
+        .typeName { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .typePrice { font-size: 18px; font-weight: 700; color: var(--primary); margin-bottom: 6px; }
+        .typeDesc { font-size: 11px; color: var(--mutedForeground); line-height: 1.5; }
+
+        /* ========== 可选步骤提示 ========== */
+        .optionalBadge {
+            display: inline-block; padding: 3px 10px; border-radius: 12px;
+            background: #fef3c7; color: #d97706; font-size: 11px; font-weight: 600;
+            margin-left: 8px; vertical-align: middle;
+        }
+
+        /* ========== 文件上传区 ========== */
+        .uploadArea {
+            border: 2px dashed var(--border); border-radius: 14px; padding: 40px;
+            text-align: center; cursor: pointer; transition: border-color 0.2s; margin-bottom: 20px;
+        }
+        .uploadArea:hover { border-color: var(--primary); }
+        .uploadIcon { font-size: 40px; margin-bottom: 12px; }
+        .uploadText { font-size: 14px; color: var(--mutedForeground); }
+        .uploadHint { font-size: 12px; color: #94a3b8; margin-top: 6px; }
+
+        /* ========== 酒店选择卡片 ========== */
+        .hotelCard {
+            display: flex; gap: 16px; border: 2px solid var(--border); border-radius: 14px;
+            padding: 16px; cursor: pointer; transition: all 0.2s; margin-bottom: 14px; position: relative;
+        }
+        .hotelCard:hover { border-color: var(--primary); }
+        .hotelCard.selected { border-color: var(--primary); background: #f8fafc; }
+        .hotelCard.selected::after {
+            content: '✓'; position: absolute; top: 10px; right: 10px;
+            width: 22px; height: 22px; border-radius: 50%; background: var(--primary); color: #fff;
+            display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: 700;
+        }
+        .hotelImg { width: 100px; height: 75px; border-radius: 10px; object-fit: cover; background: #f1f5f9; flex-shrink: 0; }
+        .hotelInfo { flex: 1; }
+        .hotelName { font-size: 15px; font-weight: 600; margin-bottom: 4px; }
+        .hotelMeta { font-size: 12px; color: var(--mutedForeground); margin-bottom: 4px; }
+        .hotelPrice { font-size: 16px; font-weight: 700; color: var(--primary); }
+
+        /* ========== 房型选择区域 ========== */
+        .roomTypeSection { margin-top: 10px; padding: 16px; background: #eff6ff; border-radius: 12px; display: none; }
+        .roomTypeSection.active { display: block; }
+        .roomGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+        .roomCard {
+            background: #fff; border: 1px solid var(--border); border-radius: 10px; padding: 12px;
+            cursor: pointer; transition: all 0.2s; position: relative;
+        }
+        .roomCard:hover { border-color: var(--primary); }
+        .roomCard.selected { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+        .roomName { font-size: 14px; font-weight: 600; margin-bottom: 2px; }
+        .roomPrice { font-size: 15px; font-weight: 700; color: var(--primary); }
+
+        /* ========== 入住人管理 ========== */
+        .occupantSection { margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--border); }
+        .occupantTitle { font-size: 16px; font-weight: 700; margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .btnSmall { padding: 6px 14px; font-size: 12px; background: var(--primary); color: #fff; border: none; border-radius: 6px; cursor: pointer; }
+        .occupantList { display: flex; flex-direction: column; gap: 12px; }
+        .occupantItem { display: grid; grid-template-columns: 1fr 1fr 40px; gap: 12px; align-items: end; }
+        .btnDel { height: 42px; width: 40px; display: flex; align-items: center; justify-content: center; background: #fee2e2; color: #ef4444; border: none; border-radius: 8px; cursor: pointer; font-size: 18px; }
+
+        /* ========== 支付方式 ========== */
+        .payGrid { display: flex; gap: 12px; margin-bottom: 24px; }
+        .payOption {
+            flex: 1; border: 2px solid var(--border); border-radius: 12px;
+            padding: 16px; text-align: center; cursor: pointer; transition: all 0.2s;
+        }
+        .payOption:hover { border-color: var(--primary); }
+        .payOption.selected { border-color: var(--primary); background: #eff6ff; }
+        .payIcon { font-size: 28px; margin-bottom: 6px; }
+        .payName { font-size: 13px; font-weight: 600; }
+
+        /* ========== 确认表格 ========== */
+        .confirmTable { width: 100%; margin-bottom: 24px; }
+        .confirmTable tr { border-bottom: 1px solid var(--border); }
+        .confirmTable td { padding: 12px 0; font-size: 14px; vertical-align: top; }
+        .confirmTable td:first-child { color: var(--mutedForeground); width: 110px; }
+        .confirmTable td:last-child { font-weight: 500; }
+        .confirmTotal {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 16px 20px; background: #eff6ff; border-radius: 12px; margin-bottom: 24px;
+        }
+        .confirmTotalLabel { font-size: 15px; font-weight: 600; }
+        .confirmTotalPrice { font-size: 26px; font-weight: 800; color: var(--primary); }
+
+        /* ========== 底部按钮 ========== */
+        .regBtnRow { display: flex; gap: 12px; justify-content: flex-end; margin-top: 28px; }
+        .btnBack {
+            padding: 11px 28px; background: #fff; color: var(--foreground);
+            border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+        }
+        .btnNext {
+            padding: 11px 28px; background: var(--primary); color: #fff;
+            border: none; border-radius: 8px; font-size: 14px; font-weight: 600; cursor: pointer;
+        }
+        .btnSkip {
+            padding: 11px 28px; background: #f8fafc; color: var(--mutedForeground);
+            border: 1px solid var(--border); border-radius: 8px; font-size: 14px; font-weight: 500; cursor: pointer;
+        }
+
+        /* ========== 步骤显隐 ========== */
+        .stepContent { display: none; }
+        .stepContent.active { display: block; }
+
+        /* ========== 成功页 ========== */
+        .successBox { text-align: center; padding: 32px 0; }
+        .successIcon { font-size: 64px; margin-bottom: 16px; }
+        .successTitle { font-size: 22px; font-weight: 700; margin-bottom: 10px; }
+        .successDesc { font-size: 13px; color: var(--mutedForeground); margin-bottom: 28px; line-height: 1.7; }
+    </style>
+</head>
+<body>
+
+    <!-- 顶部导航 -->
+    <header class="webHeader">
+        <div class="webLogo"><span>✦</span><span>2026 全球医疗科技博览</span></div>
+        <nav class="webNav">
+            <a class="webNavItem" href="index.html">首页</a>
+            <a class="webNavItem" href="schedule.html">会议日程</a>
+            <a class="webNavItem" href="paper.html">论文投稿</a>
+            <a class="webNavItem" href="hotel.html">酒店住宿</a>
+        </nav>
+        <div class="webUserArea"><a href="index.html" class="langSwitch">返回首页</a></div>
+    </header>
+
+    <main class="regPage">
+        <!-- 5步 步骤条 -->
+        <div class="stepBar">
+            <div class="stepItem"><div class="stepCircle active" id="sc1">1</div><span class="stepLabel active" id="sl1">基本信息</span></div>
+            <div class="stepLine" id="line1"></div>
+            <div class="stepItem"><div class="stepCircle" id="sc2">2</div><span class="stepLabel" id="sl2">参会类型</span></div>
+            <div class="stepLine" id="line2"></div>
+            <div class="stepItem"><div class="stepCircle" id="sc3">3</div><span class="stepLabel" id="sl3">稿件上传</span></div>
+            <div class="stepLine" id="line3"></div>
+            <div class="stepItem"><div class="stepCircle" id="sc4">4</div><span class="stepLabel" id="sl4">住宿预订</span></div>
+            <div class="stepLine" id="line4"></div>
+            <div class="stepItem"><div class="stepCircle" id="sc5">5</div><span class="stepLabel" id="sl5">确认缴费</span></div>
+        </div>
+
+        <div class="regCard">
+            <!-- ===== Step 1: 基本信息 ===== -->
+            <div class="stepContent active" id="step1">
+                <div class="regTitle">填写参会信息</div>
+                <div class="regSubtitle">请如实填写以下个人信息，用于参会证件制作</div>
+                <div class="formRow">
+                    <div class="formGroup"><label class="formLabel">真实姓名 *</label><input class="formInput" type="text" placeholder="请输入姓名" id="regName"></div>
+                    <div class="formGroup"><label class="formLabel">手机号码 *</label><input class="formInput" type="tel" placeholder="请输入手机号" id="regPhone"></div>
+                </div>
+                <div class="formRow">
+                    <div class="formGroup"><label class="formLabel">所属单位 *</label><input class="formInput" type="text" placeholder="请输入工作单位" id="regOrg"></div>
+                    <div class="formGroup"><label class="formLabel">职称/职位</label><input class="formInput" type="text" placeholder="如：主任医师"></div>
+                </div>
+                <div class="formGroupFull"><div class="formGroup"><label class="formLabel">邮箱地址 *</label><input class="formInput" type="email" placeholder="用于接收报名确认及会议通知" id="regEmail"></div></div>
+                <div class="regBtnRow">
+                    <button class="btnBack" onclick="location.href='index.html'">返回首页</button>
+                    <button class="btnNext" onclick="goStep(2)">下一步</button>
+                </div>
+            </div>
+
+            <!-- ===== Step 2: 参会类型 ===== -->
+            <div class="stepContent" id="step2">
+                <div class="regTitle">选择参会类型</div>
+                <div class="regSubtitle">请选择您的参会身份，不同类型费用有所不同</div>
+                <div class="typeGrid">
+                    <div class="typeCard selected" onclick="selectType(this,'正式代表',1200)">
+                        <div class="typeName">正式代表</div><div class="typePrice">¥ 1,200</div>
+                        <div class="typeDesc">包含全部会议议程、茶歇、工作午餐、资料包及电子证书</div>
+                    </div>
+                    <div class="typeCard" onclick="selectType(this,'学生代表',600)">
+                        <div class="typeName">学生代表</div><div class="typePrice">¥ 600</div>
+                        <div class="typeDesc">需提供有效学生证明，包含全部议程、茶歇及电子证书</div>
+                    </div>
+                    <div class="typeCard" onclick="selectType(this,'企业代表',2400)">
+                        <div class="typeName">企业代表</div><div class="typePrice">¥ 2,400</div>
+                        <div class="typeDesc">包含全部议程、VIP茶歇、工作午/晚餐、资料包、优先席位</div>
+                    </div>
+                    <div class="typeCard" onclick="selectType(this,'线上参会',300)">
+                        <div class="typeName">线上参会</div><div class="typePrice">¥ 300</div>
+                        <div class="typeDesc">远程观看全部直播议程、会后视频回放及电子资料</div>
+                    </div>
+                </div>
+                <div class="regBtnRow">
+                    <button class="btnBack" onclick="goStep(1)">上一步</button>
+                    <button class="btnNext" onclick="goStep(3)">下一步</button>
+                </div>
+            </div>
+
+            <!-- ===== Step 3: 稿件上传 [可选] ===== -->
+            <div class="stepContent" id="step3">
+                <div class="regTitle">稿件上传 <span class="optionalBadge">可选</span></div>
+                <div class="regSubtitle">如需投稿论文，请在此填写稿件信息并上传文件；如不需要可直接跳过</div>
+                <div class="formGroupFull"><div class="formGroup"><label class="formLabel">论文标题</label><input class="formInput" type="text" placeholder="请输入论文标题" id="paperTitle"></div></div>
+                <div class="formGroupFull"><div class="formGroup"><label class="formLabel">论文摘要</label><textarea class="formInput" style="height:100px;padding:12px 16px;resize:vertical;" placeholder="请输入论文摘要（300字以内）" id="paperAbstract"></textarea></div></div>
+                <div class="formGroupFull">
+                    <label class="formLabel" style="margin-bottom:8px;display:block;">上传论文文件</label>
+                    <div class="uploadArea" onclick="document.getElementById('fileInput').click()">
+                        <div class="uploadIcon">📄</div>
+                        <div class="uploadText" id="uploadLabel">点击或拖拽文件到此区域上传</div>
+                        <div class="uploadHint">支持 PDF / Word 格式，文件大小不超过 20MB</div>
+                        <input type="file" id="fileInput" accept=".pdf,.doc,.docx" style="display:none" onchange="handleFile(this)">
+                    </div>
+                </div>
+                <div class="regBtnRow">
+                    <button class="btnBack" onclick="goStep(2)">上一步</button>
+                    <button class="btnSkip" onclick="goStep(4)">跳过此步</button>
+                    <button class="btnNext" onclick="savePaper();goStep(4)">下一步</button>
+                </div>
+            </div>
+
+            <!-- ===== Step 4: 住宿预订 [可选] ===== -->
+            <div class="stepContent" id="step4">
+                <div class="regTitle">住宿预订 <span class="optionalBadge">可选</span></div>
+                <div class="regSubtitle">选择会议期间的住宿酒店及房型，并填写入住人信息</div>
+
+                <div id="hotelList">
+                    <div class="hotelCard" onclick="openRoomTypes(this,'西湖国际大酒店')">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=200" alt="酒店" class="hotelImg">
+                        <div class="hotelInfo">
+                            <div class="hotelName">西湖国际大酒店</div>
+                            <div class="hotelMeta">距会场步行5分钟 · 五星级豪华型</div>
+                            <div class="hotelPrice">¥ 480 <span style="font-size:12px;font-weight:400;color:var(--mutedForeground)">起 /晚</span></div>
+                        </div>
+                    </div>
+                    <div class="hotelCard" onclick="openRoomTypes(this,'钱塘商务酒店')">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=200" alt="酒店" class="hotelImg">
+                        <div class="hotelInfo">
+                            <div class="hotelName">钱塘商务酒店</div>
+                            <div class="hotelMeta">距会场地铁2站 · 舒适商务型</div>
+                            <div class="hotelPrice">¥ 320 <span style="font-size:12px;font-weight:400;color:var(--mutedForeground)">起 /晚</span></div>
+                        </div>
+                    </div>
+                    <div class="hotelCard" onclick="openRoomTypes(this,'如家精选酒店')">
+                        <img src="https://images.unsplash.com/photo-1618773928121-c32242e63f39?q=80&w=200" alt="酒店" class="hotelImg">
+                        <div class="hotelInfo">
+                            <div class="hotelName">如家精选酒店</div>
+                            <div class="hotelMeta">距会场公交15分钟 · 经济快捷型</div>
+                            <div class="hotelPrice">¥ 198 <span style="font-size:12px;font-weight:400;color:var(--mutedForeground)">起 /晚</span></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 房型选择区域 (动态显示) -->
+                <div class="roomTypeSection" id="roomTypeSection">
+                    <div style="font-size:14px;font-weight:600;margin-bottom:12px;" id="currentHotelLabel">选择房型</div>
+                    <div class="roomGrid" id="roomGrid">
+                        <!-- 房型通过 JS 填充 -->
+                    </div>
+                </div>
+
+                <!-- 住宿详情: 日期 + 入住人 -->
+                <div id="stayDetails" style="display:none;margin-top:24px;">
+                    <div class="formRow">
+                        <div class="formGroup"><label class="formLabel">入住日期</label><input class="formInput" type="date" value="2026-11-09" id="checkIn"></div>
+                        <div class="formGroup"><label class="formLabel">退房日期</label><input class="formInput" type="date" value="2026-11-12" id="checkOut"></div>
+                    </div>
+
+                    <!-- 入住人管理 -->
+                    <div class="occupantSection">
+                        <div class="occupantTitle">
+                            入住人信息
+                            <button class="btnSmall" onclick="addOccupant()">+ 添加入住人</button>
+                        </div>
+                        <div class="occupantList" id="occupantList">
+                            <!-- 入住人列表 -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="regBtnRow">
+                    <button class="btnBack" onclick="goStep(3)">上一步</button>
+                    <button class="btnSkip" onclick="skipHotel();goStep(5)">跳过此步</button>
+                    <button class="btnNext" onclick="goStep(5)">下一步</button>
+                </div>
+            </div>
+
+            <!-- ===== Step 5: 确认缴费 ===== -->
+            <div class="stepContent" id="step5">
+                <div class="regTitle">确认报名信息并缴费</div>
+                <div class="regSubtitle">请核对以下信息，选择支付方式后提交报名</div>
+
+                <table class="confirmTable">
+                    <tr><td>会议名称</td><td>2026 全球医疗科技博览</td></tr>
+                    <tr><td>会议时间</td><td>2026年11月10日 - 12日</td></tr>
+                    <tr><td>参会人</td><td id="confirmName">—</td></tr>
+                    <tr><td>所属单位</td><td id="confirmOrg">—</td></tr>
+                    <tr><td>参会类型</td><td id="confirmType">正式代表</td></tr>
+                    <tr><td>论文投稿</td><td id="confirmPaper">未投稿</td></tr>
+                    <tr><td>酒店预订</td><td id="confirmHotel">未预订</td></tr>
+                    <tr><td>入住人员</td><td id="confirmOccupants">—</td></tr>
+                </table>
+
+                <!-- 费用明细 -->
+                <div style="background:#f8fafc;border-radius:12px;padding:16px 20px;margin-bottom:20px;">
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;">
+                        <span class="textMuted">报名费</span><span id="feeReg">¥ 1,200</span>
+                    </div>
+                    <div style="display:flex;justify-content:space-between;margin-bottom:8px;font-size:13px;">
+                        <span class="textMuted">住宿费</span><span id="feeHotel">¥ 0</span>
+                    </div>
+                    <div style="height:1px;background:var(--border);margin:8px 0;"></div>
+                    <div class="confirmTotal" style="padding:0;background:transparent;margin:0;">
+                        <span class="confirmTotalLabel">应付总额</span>
+                        <span class="confirmTotalPrice" id="confirmPrice">¥ 1,200</span>
+                    </div>
+                </div>
+
+                <!-- 支付方式 -->
+                <label class="formLabel" style="margin-bottom:10px;display:block;">选择支付方式</label>
+                <div class="payGrid">
+                    <div class="payOption selected" onclick="selectPay(this,'微信支付')">
+                        <div class="payIcon">💚</div><div class="payName">微信支付</div>
+                    </div>
+                    <div class="payOption" onclick="selectPay(this,'支付宝')">
+                        <div class="payIcon">💙</div><div class="payName">支付宝</div>
+                    </div>
+                    <div class="payOption" onclick="selectPay(this,'其它')">
+                        <div class="payIcon">💳</div><div class="payName">其它方式</div>
+                    </div>
+                </div>
+
+                <div class="regBtnRow">
+                    <button class="btnBack" onclick="goStep(4)">上一步</button>
+                    <button class="btnNext" onclick="submitReg()">提交报名并支付</button>
+                </div>
+            </div>
+
+            <!-- ===== 报名成功 ===== -->
+            <div class="stepContent" id="stepDone">
+                <div class="successBox">
+                    <div class="successIcon">🎉</div>
+                    <div class="successTitle">报名成功！</div>
+                    <div class="successDesc">
+                        您已成功报名 2026 全球医疗科技博览<br>
+                        报名确认邮件已发送至您的注册邮箱，请注意查收。<br>
+                        您可以在个人中心查看报名详情和参会凭证。
+                    </div>
+                    <div style="display:flex;gap:12px;justify-content:center;">
+                        <button class="btnBack" onclick="location.href='profile.html'">前往个人中心</button>
+                        <button class="btnNext" onclick="location.href='index.html'">返回首页</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+    <script>
+        /* 酒店房型数据 */
+        const HOTEL_DATA = {
+            '西湖国际大酒店': [
+                { name: '高级大床房', price: 480 },
+                { name: '高级双床房', price: 520 },
+                { name: '行政大床房', price: 680 },
+                { name: '行政套房', price: 1280 }
+            ],
+            '钱塘商务酒店': [
+                { name: '标准大床房', price: 320 },
+                { name: '标准双床房', price: 350 },
+                { name: '商务套房', price: 500 }
+            ],
+            '如家精选酒店': [
+                { name: '经济大床房', price: 198 },
+                { name: '经济双床房', price: 228 }
+            ]
+        };
+
+        /* 全局状态 */
+        let currentType = '正式代表', regPrice = 1200;
+        let paperTitle = '', hotelName = '', hotelRoom = '', hotelPrice = 0, hotelNights = 3;
+        let payMethod = '微信支付';
+        let occupants = []; // [{name: '', idCard: ''}]
+        const TOTAL_STEPS = 5;
+
+        /* 初始化 */
+        window.addEventListener('load', () => {
+            // 默认添加一个入住人 (主报名人)
+            addOccupant();
+        });
+
+        /* 步骤切换 */
+        function goStep(n) {
+            if (n === 5) fillConfirm(); 
+            document.querySelectorAll('.stepContent').forEach(s => s.classList.remove('active'));
+            document.getElementById('step' + n).classList.add('active');
+            for (let i = 1; i <= TOTAL_STEPS; i++) {
+                const sc = document.getElementById('sc' + i);
+                const sl = document.getElementById('sl' + i);
+                sc.classList.remove('active', 'done'); sl.classList.remove('active');
+                if (i < n) { sc.classList.add('done'); sc.textContent = '✓'; }
+                else if (i === n) { sc.classList.add('active'); sl.classList.add('active'); sc.textContent = i; }
+                else { sc.textContent = i; }
+            }
+            for (let i = 1; i < TOTAL_STEPS; i++) {
+                document.getElementById('line' + i).classList.toggle('done', n > i);
+            }
+            window.scrollTo(0, 0);
+        }
+
+        /* 选类型 */
+        function selectType(el, name, price) {
+            document.querySelectorAll('.typeCard').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            currentType = name; regPrice = price;
+        }
+
+        /* 文件上传反馈 */
+        function handleFile(input) {
+            if (input.files.length > 0) {
+                document.getElementById('uploadLabel').textContent = '✅ ' + input.files[0].name;
+            }
+        }
+
+        /* 保存论文信息 */
+        function savePaper() {
+            paperTitle = document.getElementById('paperTitle').value || '';
+        }
+
+        /* 展开房型 */
+        function openRoomTypes(el, name) {
+            hotelName = name;
+            document.querySelectorAll('.hotelCard').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+
+            document.getElementById('roomTypeSection').classList.add('active');
+            document.getElementById('currentHotelLabel').textContent = `选择 ${name} 的房型`;
+
+            const grid = document.getElementById('roomGrid');
+            grid.innerHTML = '';
+            HOTEL_DATA[name].forEach(room => {
+                const card = document.createElement('div');
+                card.className = 'roomCard';
+                if (hotelRoom === room.name) card.classList.add('selected');
+                card.onclick = () => selectRoom(card, room.name, room.price);
+                card.innerHTML = `<div class="roomName">${room.name}</div><div class="roomPrice">¥ ${room.price}</div>`;
+                grid.appendChild(card);
+            });
+            window.scrollTo({ top: el.offsetTop - 50, behavior: 'smooth' });
+        }
+
+        /* 选房型 */
+        function selectRoom(el, name, price) {
+            document.querySelectorAll('.roomCard').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            hotelRoom = name;
+            hotelPrice = price;
+            document.getElementById('stayDetails').style.display = 'block';
+        }
+
+        /* 入住人管理 */
+        function addOccupant() {
+            const id = Date.now();
+            const div = document.createElement('div');
+            div.className = 'occupantItem';
+            div.id = 'occ-' + id;
+            div.innerHTML = `
+                <div class="formGroup"><label class="formLabel">姓名</label><input class="formInput occ-name" type="text" placeholder="入住人姓名"></div>
+                <div class="formGroup"><label class="formLabel">证件号</label><input class="formInput occ-id" type="text" placeholder="身份证号"></div>
+                ${document.getElementById('occupantList').children.length > 0 ? `<button class="btnDel" onclick="removeOccupant('occ-${id}')">×</button>` : '<div></div>'}
+            `;
+            document.getElementById('occupantList').appendChild(div);
+        }
+
+        function removeOccupant(id) {
+            document.getElementById(id).remove();
+        }
+
+        /* 跳过住宿 */
+        function skipHotel() { hotelName = ''; hotelPrice = 0; hotelRoom = ''; }
+
+        /* 选支付方式 */
+        function selectPay(el, method) {
+            document.querySelectorAll('.payOption').forEach(c => c.classList.remove('selected'));
+            el.classList.add('selected');
+            payMethod = method;
+        }
+
+        /* 汇总确认页数据 */
+        function fillConfirm() {
+            document.getElementById('confirmName').textContent = document.getElementById('regName').value || '张三';
+            document.getElementById('confirmOrg').textContent = document.getElementById('regOrg').value || '浙江大学医学院';
+            document.getElementById('confirmType').textContent = currentType;
+            document.getElementById('confirmPaper').textContent = paperTitle ? paperTitle : '未投稿';
+
+            // 提取入住人
+            const names = Array.from(document.querySelectorAll('.occ-name')).map(input => input.value).filter(v => v);
+            document.getElementById('confirmOccupants').textContent = names.length > 0 ? names.join('、') : '—';
+
+            // 住宿计算
+            const ci = document.getElementById('checkIn').value;
+            const co = document.getElementById('checkOut').value;
+            if (ci && co) hotelNights = Math.max(1, Math.round((new Date(co) - new Date(ci)) / 86400000));
+            const totalHotel = hotelName ? hotelPrice * hotelNights : 0;
+            document.getElementById('confirmHotel').textContent = hotelName ? `${hotelName} · ${hotelRoom} (${hotelNights}晚)` : '未预订';
+            
+            document.getElementById('feeReg').textContent = '¥ ' + regPrice.toLocaleString();
+            document.getElementById('feeHotel').textContent = '¥ ' + totalHotel.toLocaleString();
+            document.getElementById('confirmPrice').textContent = '¥ ' + (regPrice + totalHotel).toLocaleString();
+        }
+
+        /* 提交 */
+        function submitReg() {
+            document.querySelectorAll('.stepContent').forEach(s => s.classList.remove('active'));
+            document.getElementById('stepDone').classList.add('active');
+            for (let i = 1; i <= TOTAL_STEPS; i++) {
+                document.getElementById('sc' + i).classList.add('done');
+                document.getElementById('sc' + i).classList.remove('active');
+                document.getElementById('sc' + i).textContent = '✓';
+            }
+            for (let i = 1; i < TOTAL_STEPS; i++) document.getElementById('line' + i).classList.add('done');
+        }
+    </script>
+</body>
+</html>
+

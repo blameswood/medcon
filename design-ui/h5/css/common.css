@@ -1,0 +1,210 @@
+/* ============================================
+ * 通用样式文件 - H5 端 (375px 适配)
+ * 设计稿基准宽度: 375px
+ * 基于 v1.0.pen 设计稿变量系统
+ * ============================================ */
+
+/* --- CSS 变量（设计系统 Token） --- */
+:root {
+  --background: #f8fafc;
+  --surface: #ffffff;
+  --foreground: #0f172a;
+  --mutedForeground: #64748b;
+  --primary: #2563eb;
+  --primaryGradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  --primaryForeground: #FFFFFF;
+  --border: #f1f5f9;
+  --fontPrimary: "PingFang SC", "Helvetica Neue", -apple-system, sans-serif;
+  --radiusSm: 8px;
+  --radiusMd: 12px;
+  --radiusLg: 20px;
+  --radiusXl: 24px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+  --shadowLg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+}
+
+/* --- 全局重置 --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--fontPrimary);
+  font-size: 14px;
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+/* --- 页面容器 (模拟 375 宽度) --- */
+.pageWrap {
+  max-width: 375px;
+  min-height: 100vh;
+  margin: 0 auto;
+  background: var(--background);
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+}
+
+/* --- 状态栏占位 --- */
+.statusBar {
+  height: 44px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* --- 标题栏 --- */
+.titleBar {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  font-weight: 600;
+  background: var(--surface);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 1px 0 rgba(0,0,0,0.05);
+}
+
+.titleBar .backBtn {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* --- 主内容滚动区 --- */
+.scrollArea {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0 16px 24px;
+}
+
+/* --- 底部 Tab 导航 --- */
+.tabBar {
+  display: flex;
+  justify-content: center;
+  padding: 12px 21px 21px;
+  background: var(--background);
+  border-top: 1px solid var(--border);
+}
+
+.tabBar .tabItem {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: var(--mutedForeground);
+  cursor: pointer;
+}
+
+.tabBar .tabItem.active {
+  color: var(--primary);
+}
+
+.tabBar .tabItem .tabIcon {
+  width: 24px;
+  height: 24px;
+}
+
+/* --- 常用卡片容器 --- */
+.card {
+  background: var(--surface);
+  border-radius: var(--radiusLg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+  border: 1px solid var(--border);
+}
+
+/* --- 常用按钮 --- */
+.btnPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: var(--primaryForeground);
+  border: none;
+  border-radius: var(--radiusMd);
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btnOutline {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: var(--radiusMd);
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* --- 徽标/标签 --- */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.badgePrimary {
+  background: #007AFF20;
+  color: var(--primary);
+}
+
+.badgeSuccess {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+/* --- 分割线 --- */
+.divider {
+  height: 1px;
+  background: var(--border);
+  width: 100%;
+}
+
+/* --- 文字工具类 --- */
+.textSm { font-size: 12px; }
+.textBase { font-size: 14px; }
+.textLg { font-size: 16px; }
+.textXl { font-size: 18px; }
+.text2xl { font-size: 20px; }
+.text3xl { font-size: 24px; }
+.fontBold { font-weight: 600; }
+.textMuted { color: var(--mutedForeground); }
+.textPrimary { color: var(--primary); }

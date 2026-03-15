@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>登录 - H5</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== 登录页专属样式 ========== */
+
+    .loginHeader {
+      padding: 80px 24px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .loginTitle {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .loginSubtitle {
+      font-size: 14px;
+      color: var(--mutedForeground);
+    }
+
+    .loginForm {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 0 24px;
+    }
+
+    .formGroup {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .formLabel {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .formInput {
+      height: 48px;
+      border: 1px solid var(--border);
+      border-radius: var(--radiusMd);
+      padding: 0 16px;
+      font-size: 15px;
+      background: var(--surface);
+      outline: none;
+      font-family: var(--fontPrimary);
+    }
+
+    .formInput:focus {
+      border-color: var(--primary);
+    }
+
+    /* 操作区 */
+    .loginActions {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding: 40px 24px;
+      align-items: center;
+    }
+
+    .forgotLink {
+      font-size: 13px;
+      color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* 底部提示 */
+    .loginFooter {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0 0 40px;
+      align-items: center;
+    }
+
+    .registerTip {
+      font-size: 13px;
+      color: var(--mutedForeground);
+    }
+
+    .registerTip a {
+      color: var(--primary);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="pageWrap">
+
+    <!-- 顶部标题 -->
+    <div class="loginHeader">
+      <div class="loginTitle">欢迎登录</div>
+      <div class="loginSubtitle">2026 全球医疗科技博览</div>
+    </div>
+
+    <!-- 表单 -->
+    <div class="loginForm">
+      <div class="formGroup">
+        <label class="formLabel">手机号码</label>
+        <input class="formInput" type="tel" placeholder="请输入手机号码">
+      </div>
+      <div class="formGroup">
+        <label class="formLabel">登录密码</label>
+        <input class="formInput" type="password" placeholder="请输入密码">
+      </div>
+    </div>
+
+    <!-- 操作区 -->
+    <div class="loginActions">
+      <button class="btnPrimary" onclick="location.href='index.html'">登录</button>
+      <span class="forgotLink">忘记密码？</span>
+    </div>
+
+    <!-- 底部切换注册 -->
+    <div class="loginFooter">
+      <div class="registerTip">
+        还没有账号？<a href="register.html">立即注册</a>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

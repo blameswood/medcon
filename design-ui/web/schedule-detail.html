@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日程详情 - Web端</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== 日程详情页专属样式 ========== */
+    .dtWrap {
+      padding: 80px 240px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    .dtBack {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 14px;
+      color: var(--mutedForeground);
+      cursor: pointer;
+    }
+
+    .dtCard {
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      border: 1px solid var(--border);
+      padding: 48px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    /* 标题区 */
+    .dtHeader {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .dtBadgeRow {
+      display: flex;
+      gap: 12px;
+    }
+
+    .dtBadge {
+      padding: 4px 12px;
+      border-radius: 16px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .dtBadgeBlue {
+      background: #eff6ff;
+      color: #1d4ed8;
+    }
+
+    .dtBadgeGray {
+      background: #f3f4f6;
+      color: var(--mutedForeground);
+    }
+
+    .dtTitle {
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    .dtSubtitle {
+      font-size: 16px;
+      color: var(--mutedForeground);
+      line-height: 1.6;
+    }
+
+    /* 分割线 */
+    .dtDivider {
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* 嘉宾板块 */
+    .dtSectionTitle {
+      font-size: 20px;
+      font-weight: 600;
+    }
+
+    .dtSpeakerCard {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      padding: 24px;
+      background: #f8fafc;
+      border-radius: 12px;
+    }
+
+    .dtSpeakerAvatar {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .dtSpeakerInfo {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .dtSpeakerName {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .dtSpeakerOrg {
+      font-size: 14px;
+      color: var(--mutedForeground);
+    }
+
+    /* 内容列表 */
+    .dtContentList {
+      font-size: 14px;
+      line-height: 2;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航 -->
+  <header class="webHeader">
+    <div class="webLogo"><span>✦</span><span>2026 全球医疗科技博览</span></div>
+    <nav class="webNav">
+      <a class="webNavItem" href="index.html">首页</a>
+      <a class="webNavItem active" href="schedule.html">会议日程</a>
+      <a class="webNavItem" href="paper.html">论文投稿</a>
+      <a class="webNavItem" href="hotel.html">酒店住宿</a>
+    </nav>
+    <div class="webUserArea">
+      <div class="langSwitch">🌐 Language</div>
+      <button class="btnRegWeb">注册</button>
+      <button class="btnLoginWeb">登录</button>
+    </div>
+  </header>
+
+  <main class="dtWrap">
+
+    <!-- 返回 -->
+    <div class="dtBack" onclick="history.back()">
+      ← 返回日程列表
+    </div>
+
+    <!-- 详情卡片 -->
+    <div class="dtCard">
+
+      <!-- 标题区 -->
+      <div class="dtHeader">
+        <div class="dtBadgeRow">
+          <span class="dtBadge dtBadgeBlue">主会场</span>
+          <span class="dtBadge dtBadgeGray">11:30 - 12:00</span>
+        </div>
+        <h1 class="dtTitle">医疗AI的前沿探索与应用</h1>
+        <p class="dtSubtitle">探讨人工智能在疾病早期筛查、影像辅助诊断及智能问诊中的最新进展和挑战。</p>
+      </div>
+
+      <div class="dtDivider"></div>
+
+      <!-- 演讲嘉宾 -->
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <h2 class="dtSectionTitle">演讲嘉宾</h2>
+        <div class="dtSpeakerCard">
+          <div class="dtSpeakerAvatar">李</div>
+          <div class="dtSpeakerInfo">
+            <div class="dtSpeakerName">李四 研究员</div>
+            <div class="dtSpeakerOrg">XX医学院附属第一医院 人工智能应用中心主任</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 详细议程内容 -->
+      <div style="display:flex;flex-direction:column;gap:24px">
+        <h2 class="dtSectionTitle">详细议程内容</h2>
+        <div class="dtContentList">
+          1. 人工智能在放射影像分析中的应用前景。<br>
+          2. 大语言模型如何辅助临床医生进行罕见病初步诊断。<br>
+          3. 未来 3-5 年内，AI医疗技术的合规性与安全性挑战。<br>
+          4. 圆桌提问与开放讨论时间（约15分钟）。
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+</body>
+</html>

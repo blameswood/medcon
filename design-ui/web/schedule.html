@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>会议日程 - Web端</title>
+  <link rel="stylesheet" href="css/common.css">
+  <style>
+    /* ========== Web 日程页专属样式 ========== */
+    .schWrap {
+      padding: 80px;
+      display: flex;
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    /* 头部区 */
+    .schHeaderRow {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .schPageTitle {
+      font-size: 32px;
+      font-weight: 600;
+    }
+
+    /* 会场选项卡 */
+    .venueBox {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .venueTabs {
+      display: flex;
+      gap: 32px;
+    }
+
+    .venueTab {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--mutedForeground);
+      cursor: pointer;
+      padding: 4px 0;
+    }
+
+    .venueTab.active {
+      color: var(--primary);
+    }
+
+    /* 日期选择（位于会场下方） */
+    .dateBox {
+      display: flex;
+      gap: 16px;
+    }
+
+    .dateChip {
+      padding: 8px 24px;
+      border-radius: 20px;
+      font-size: 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      cursor: pointer;
+    }
+
+    .dateChip.active {
+      background: var(--primary);
+      color: white;
+      border-color: var(--primary);
+    }
+
+    /* 日程卡片列表 */
+    .schList {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .schCard {
+      display: flex;
+      align-items: center;
+      background: var(--surface);
+      border-radius: var(--radiusLg);
+      padding: 32px;
+      cursor: pointer;
+      transition: box-shadow 0.2s;
+    }
+
+    .schCard:hover {
+      box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+    }
+
+    /* 左侧时间列 */
+    .schCardLeft {
+      width: 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .schCardTime {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .schCardType {
+      font-size: 13px;
+      color: var(--mutedForeground);
+    }
+
+    /* 中间内容列 */
+    .schCardCenter {
+      flex: 1;
+      padding: 0 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .schCardTitle {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .schCardDesc {
+      font-size: 14px;
+      color: var(--mutedForeground);
+    }
+
+    /* 右侧讲者/操作列 */
+    .schCardRight {
+      width: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 24px;
+      flex-shrink: 0;
+    }
+
+    .spkRow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .spkAvatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+
+    .spkName {
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .followBtnWeb {
+      padding: 6px 16px;
+      border-radius: 16px;
+      border: 1px solid var(--primary);
+      background: transparent;
+      color: var(--primary);
+      font-size: 13px;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .followBtnWeb.followed {
+      background: var(--primary);
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 导航 -->
+  <header class="webHeader">
+    <div class="webLogo"><span>✦</span><span>2026 全球医疗科技博览</span></div>
+    <nav class="webNav">
+      <a class="webNavItem" href="index.html">首页</a>
+      <a class="webNavItem active">会议日程</a>
+      <a class="webNavItem" href="paper.html">论文投稿</a>
+      <a class="webNavItem" href="hotel.html">酒店住宿</a>
+    </nav>
+    <div class="webUserArea">
+      <div class="langSwitch">🌐 Language</div>
+      <button class="btnRegWeb">注册</button>
+      <button class="btnLoginWeb">登录</button>
+    </div>
+  </header>
+
+  <!-- 日程内容 -->
+  <main class="schWrap">
+
+    <!-- 顶部：标题 + 会场 + 日期 -->
+    <div class="schHeaderRow">
+      <h1 class="schPageTitle">会议日程</h1>
+      <div class="venueBox">
+        <div class="venueTabs">
+          <div class="venueTab active">主会场</div>
+          <div class="venueTab">分会场A</div>
+          <div class="venueTab">分会场B</div>
+        </div>
+      </div>
+      <div class="dateBox">
+        <div class="dateChip active">11月10日</div>
+        <div class="dateChip">11月11日</div>
+        <div class="dateChip">11月12日</div>
+      </div>
+    </div>
+
+    <!-- 日程列表 -->
+    <div class="schList">
+
+      <a class="schCard" href="schedule-detail.html">
+        <div class="schCardLeft">
+          <div class="schCardTime">09:00 - 10:30</div>
+          <div class="schCardType">主旨演讲</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">大会开幕式及主旨演讲 - 探讨未来医学</div>
+          <div class="schCardDesc">张志明 教授 · 北京大学医学部</div>
+        </div>
+        <div class="schCardRight">
+          <div class="spkRow">
+            <div class="spkAvatar">张</div>
+            <div class="spkName">张志明 教授</div>
+          </div>
+          <button class="followBtnWeb followed">☆ 已关注</button>
+        </div>
+      </a>
+
+      <a class="schCard" href="schedule-detail.html">
+        <div class="schCardLeft">
+          <div class="schCardTime">10:30 - 12:00</div>
+          <div class="schCardType">专家论坛</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">AI在肿瘤靶向治疗中的应用</div>
+          <div class="schCardDesc">李明浩 研究员 · 复旦大学附属医院</div>
+        </div>
+        <div class="schCardRight">
+          <div class="spkRow">
+            <div class="spkAvatar">李</div>
+            <div class="spkName">李明浩 研究员</div>
+          </div>
+          <button class="followBtnWeb">☆ 关注</button>
+        </div>
+      </a>
+
+      <a class="schCard" href="schedule-detail.html">
+        <div class="schCardLeft">
+          <div class="schCardTime">11:30 - 12:00</div>
+          <div class="schCardType">专题报告</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">医疗AI的前沿探索</div>
+          <div class="schCardDesc">人工智能在早期筛查中的应用探讨</div>
+        </div>
+        <div class="schCardRight">
+          <div class="spkRow">
+            <div class="spkAvatar">李</div>
+            <div class="spkName">李四研究员</div>
+          </div>
+          <button class="followBtnWeb">☆ 关注</button>
+        </div>
+      </a>
+
+      <div class="schCard">
+        <div class="schCardLeft">
+          <div class="schCardTime">12:00 - 13:30</div>
+          <div class="schCardType">午餐</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">午餐及午休时间</div>
+          <div class="schCardDesc">主会场食堂 (凭午餐券入场)</div>
+        </div>
+        <div class="schCardRight">
+          <span style="font-size:14px;color:var(--mutedForeground)">大会工作组</span>
+        </div>
+      </div>
+
+      <a class="schCard" href="schedule-detail.html">
+        <div class="schCardLeft">
+          <div class="schCardTime">13:30 - 15:30</div>
+          <div class="schCardType">路演展示</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">创新医疗器械路演</div>
+          <div class="schCardDesc">多家初创企业产品展示与投资洽谈</div>
+        </div>
+        <div class="schCardRight">
+          <span style="font-size:14px;color:var(--mutedForeground)">多位演讲嘉宾</span>
+        </div>
+      </a>
+
+      <div class="schCard">
+        <div class="schCardLeft">
+          <div class="schCardTime">15:30 - 15:45</div>
+          <div class="schCardType">茶歇</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">茶歇与自由交流</div>
+          <div class="schCardDesc">展区展示及茶点提供</div>
+        </div>
+        <div class="schCardRight">
+          <span style="font-size:14px;color:var(--mutedForeground)">全体参会人员</span>
+        </div>
+      </div>
+
+      <a class="schCard" href="schedule-detail.html">
+        <div class="schCardLeft">
+          <div class="schCardTime">15:45 - 17:00</div>
+          <div class="schCardType">闭门研讨</div>
+        </div>
+        <div class="schCardCenter">
+          <div class="schCardTitle">闭门研讨会：医改新政解读</div>
+          <div class="schCardDesc">仅受邀代表参加</div>
+        </div>
+        <div class="schCardRight">
+          <div class="spkRow">
+            <div class="spkAvatar">王</div>
+            <div class="spkName">王五 教授</div>
+          </div>
+          <button class="followBtnWeb">☆ 关注</button>
+        </div>
+      </a>
+
+    </div>
+
+  </main>
+
+  <footer class="webFooter">© 2026 全球医疗科技博览组委会 · 版权所有</footer>
+
+</body>
+</html>

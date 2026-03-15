@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>论文投稿 - MedCon</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .stepBar { display: flex; align-items: center; gap: 8px; padding: 12px 20px; background: #fff; margin-bottom: 2px; }
+        .stepItem { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--mutedForeground); }
+        .stepItem.active { color: var(--primary); font-weight: 600; }
+        .stepCircle { width: 18px; height: 18px; border-radius: 50%; border: 1px solid currentColor; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+        .stepItem.active .stepCircle { background: var(--primary); color: #fff; border: none; }
+        .stepLine { flex: 1; height: 1px; background: var(--border); }
+        
+        .formSection { padding: 20px; }
+        .inputGroup { margin-bottom: 20px; }
+        .label { display: block; font-size: 14px; font-weight: 500; margin-bottom: 8px; }
+        .input { width: 100%; padding: 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; outline: none; background: #fff; }
+        .textarea { height: 120px; resize: none; }
+        .uploadBox { border: 2px dashed var(--border); border-radius: 12px; padding: 32px; text-align: center; color: var(--mutedForeground); background: #fcfcfc; }
+        .uploadIcon { font-size: 24px; margin-bottom: 8px; display: block; }
+        
+        .bottomBtn { padding: 12px 20px 32px; background: #fff; border-top: 1px solid var(--border); position: fixed; bottom: 0; width: 375px; left: 50%; transform: translateX(-50%); }
+    </style>
+</head>
+<body>
+    <div class="pageWrap">
+        <header class="titleBar">
+            <a href="profile.html" class="backBtn">✕</a>
+            <span>论文投稿</span>
+        </header>
+
+        <div class="stepBar">
+            <div class="stepItem active"><span class="stepCircle">1</span>基本信息</div>
+            <div class="stepLine"></div>
+            <div class="stepItem"><span class="stepCircle">2</span>论文上传</div>
+        </div>
+
+        <div class="scrollArea">
+            <div class="formSection">
+                <div class="inputGroup">
+                    <label class="label">论文题目</label>
+                    <input type="text" class="input" placeholder="请输入论文标题">
+                </div>
+                <div class="inputGroup">
+                    <label class="label">关键词</label>
+                    <input type="text" class="input" placeholder="多个关键词请用逗号分隔">
+                </div>
+                <div class="inputGroup">
+                    <label class="label">摘要</label>
+                    <textarea class="input textarea" placeholder="请输入论文摘要..."></textarea>
+                </div>
+                <div class="inputGroup">
+                    <label class="label">附件上传</label>
+                    <div class="uploadBox">
+                        <span class="uploadIcon">📄</span>
+                        <p class="textSm">点击或将文件拖拽到这里上传</p>
+                        <p class="textSm" style="margin-top:4px;">支持 PDF, DOCX (最大 10MB)</p>
+                    </div>
+                </div>
+            </div>
+            <div style="height: 100px;"></div>
+        </div>
+
+        <div class="bottomBtn">
+            <button class="btnPrimary" onclick="location.href='profile.html'">提交投稿</button>
+        </div>
+    </div>
+</body>
+</html>

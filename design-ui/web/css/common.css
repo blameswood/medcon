@@ -1,0 +1,255 @@
+/* ============================================
+ * Web 端通用样式 (1440px 宽屏适配)
+ * 基于 v1.0.pen 设计稿变量系统
+ * ============================================ */
+
+:root {
+  --background: #f8fafc;
+  --surface: rgba(255, 255, 255, 0.9);
+  --surfaceSolid: #ffffff;
+  --foreground: #0f172a;
+  --mutedForeground: #64748b;
+  --primary: #2563eb;
+  --primaryGradient: linear-gradient(135deg, #2563eb 0%, #3b82f6 100%);
+  --border: #e2e8f0;
+  --fontPrimary: "Inter", "PingFang SC", "Helvetica Neue", -apple-system, sans-serif;
+  --radiusSm: 8px;
+  --radiusMd: 12px;
+  --radiusLg: 24px;
+  --radiusXl: 32px;
+  --shadowSm: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
+  --shadowMd: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadowLg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+  --glass: blur(12px) saturate(180%);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  font-family: var(--fontPrimary);
+  font-size: 14px;
+  color: var(--foreground);
+  background: var(--background);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { text-decoration: none; color: inherit; }
+img { max-width: 100%; display: block; }
+
+/* --- 顶部导航栏 --- */
+.webHeader {
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: var(--glass);
+  -webkit-backdrop-filter: var(--glass);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: var(--shadowSm);
+}
+
+.webLogo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.webLogoIcon {
+  width: 32px;
+  height: 32px;
+}
+
+/* 导航菜单 */
+.webNav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+}
+
+.webNavItem {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--mutedForeground);
+  cursor: pointer;
+  padding: 8px 0;
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+.webNavItem:hover {
+  color: var(--primary);
+}
+
+.webNavItem.active {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.webNavItem.active::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primaryGradient);
+  border-radius: 2px;
+}
+
+/* 右侧用户操作区 */
+.webUserArea {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 多语言入口 */
+.langSwitch {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* 按钮 */
+.btnRegWeb {
+  padding: 8px 20px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--surface);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.btnLoginWeb {
+  padding: 8px 20px;
+  border: none;
+  border-radius: 6px;
+  background: var(--primary);
+  color: white;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+/* --- 通用内容容器 --- */
+.webContentWrap {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px;
+}
+
+/* --- 通用卡片 --- */
+.webCard {
+  background: var(--surface);
+  border-radius: var(--radiusLg);
+  border: 1px solid var(--border);
+  padding: 32px;
+}
+
+/* --- 弹窗遮罩 --- */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 200;
+}
+
+.modalOverlay.show {
+  display: flex;
+}
+
+.modalBox {
+  background: var(--surface);
+  border-radius: var(--radiusLg);
+  border: 1px solid var(--border);
+  padding: 32px 40px 40px;
+  width: 440px;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+/* --- 表单控件 --- */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formLabel {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.formInput {
+  height: 44px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 0 14px;
+  font-size: 14px;
+  background: var(--background);
+  outline: none;
+  font-family: var(--fontPrimary);
+}
+
+.formInput:focus {
+  border-color: var(--primary);
+}
+
+.btnPrimaryWeb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+
+.btnOutlineWeb {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--background);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 0;
+  font-size: 15px;
+  font-weight: 600;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* --- 页脚 --- */
+.webFooter {
+  padding: 40px 80px;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 13px;
+  color: var(--mutedForeground);
+}

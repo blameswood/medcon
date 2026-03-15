@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>酒店预订 - MedCon 学术会议系统</title>
+    <link rel="stylesheet" href="css/common.css">
+    <style>
+        .hotelHero { padding: 80px; background: linear-gradient(rgba(15, 23, 42, 0.7), rgba(15, 23, 42, 0.7)), url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?q=80&w=1600'); background-size: cover; background-position: center; color: #fff; }
+        .hotelContainer { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+        
+        .hotelSection { margin-bottom: 60px; }
+        .sectionTitle { font-size: 28px; font-weight: 700; margin-bottom: 32px; display: flex; align-items: center; gap: 12px; }
+        .sectionTitle::before { content: ''; width: 4px; height: 24px; background: var(--primary); border-radius: 2px; }
+
+        .hotelGrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
+        .hotelCard { background: #fff; border-radius: 20px; overflow: hidden; box-shadow: var(--shadowMd); border: 1px solid var(--border); display: flex; flex-direction: column; transition: transform 0.3s; }
+        .hotelCard:hover { transform: translateY(-5px); }
+        
+        .hotelGallery { height: 220px; background: #eee; position: relative; }
+        .hotelGallery img { width: 100%; height: 100%; object-fit: cover; }
+        .hotelPriceTag { position: absolute; right: 20px; bottom: 20px; background: var(--primaryGradient); color: #fff; padding: 8px 16px; border-radius: 12px; font-weight: 700; font-size: 18px; box-shadow: var(--shadowMd); }
+        
+        .hotelBody { padding: 24px; flex: 1; }
+        .hotelTag { display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 12px; background: #eff6ff; color: #2563eb; font-weight: 600; margin-bottom: 8px; }
+        .hotelName { font-size: 22px; font-weight: 700; margin-bottom: 12px; }
+        .hotelDesc { color: var(--mutedForeground); font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+        
+        /* 预订面板 */
+        .bookPanel { 
+            background: #fff; border: 1px solid var(--border); border-radius: 20px; 
+            padding: 40px; box-shadow: var(--shadowLg); display: none; margin-top: 40px;
+        }
+        .bookPanel.active { display: block; animation: slideUp 0.4s ease-out; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .formGrid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+        .fGroup { margin-bottom: 0; }
+        .fLabel { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--foreground); }
+        .fInput { width: 100%; height: 48px; border: 1px solid var(--border); border-radius: 12px; padding: 0 16px; font-size: 14px; outline: none; transition: border-color 0.2s; }
+        .fInput:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+
+        /* 房型选择 */
+        .roomGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-bottom: 32px; }
+        .roomItem { 
+            border: 2px solid var(--border); border-radius: 16px; padding: 20px; text-align: center;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .roomItem:hover { border-color: var(--primary); background: #f8fafc; }
+        .roomItem.selected { border-color: var(--primary); background: #eff6ff; }
+        .rn { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+        .rp { font-size: 18px; font-weight: 800; color: var(--primary); }
+
+        /* 入住人列表 */
+        .occList { background: #f8fafc; border-radius: 16px; padding: 24px; margin-bottom: 32px; }
+        .occRow { display: grid; grid-template-columns: 1fr 1fr 40px; gap: 16px; margin-bottom: 12px; align-items: flex-end; }
+        .btnDel { width: 40px; height: 40px; background: #fee2e2; color: #ef4444; border-radius: 10px; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
+
+        /* 总计与按钮 */
+        .summaryBar { 
+            display: flex; justify-content: space-between; align-items: center; 
+            padding-top: 32px; border-top: 1px solid var(--border);
+        }
+        .totalInfo { font-size: 14px; color: var(--mutedForeground); }
+        .totalVal { font-size: 32px; font-weight: 800; color: var(--primary); }
+        .summaryBar .btnPrimaryWeb { width: auto; min-width: 240px; }
+    </style>
+</head>
+<body>
+    <header class="webHeader">
+        <div class="webLogo" onclick="location.href='index.html'" style="cursor:pointer">
+            <span style="font-size:24px;">🌐</span> MedCon 2026
+        </div>
+        <nav class="webNav">
+            <a href="index.html" class="webNavItem">首页</a>
+            <a href="schedule.html" class="webNavItem">日程</a>
+            <a href="paper.html" class="webNavItem">论文投稿</a>
+            <a href="hotel.html" class="webNavItem active">酒店预订</a>
+        </nav>
+        <div class="webUserArea">
+            <div class="langSwitch">EN / 中文</div>
+            <a href="profile.html" class="btnLoginWeb">进入个人中心</a>
+        </div>
+    </header>
+
+    <section class="hotelHero">
+        <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
+            <p class="hotelTag" style="background: rgba(255,255,255,0.2); color: #fff;">EXCLUSIVE RATES</p>
+            <h1 style="font-size: 48px; margin-bottom: 16px;">精选大会合作酒店</h1>
+            <p style="font-size: 18px; max-width: 600px;">我们为您精选了距离会场最近、服务最完善的五星级与商务酒店，尊享参会代表专属优惠价格。</p>
+        </div>
+    </section>
+
+    <main class="hotelContainer">
+        <div class="hotelSection">
+            <div class="sectionTitle">可预订酒店</div>
+            <div class="hotelGrid">
+                <div class="hotelCard">
+                    <div class="hotelGallery">
+                        <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?q=80&w=800" alt="Hotel">
+                        <div class="hotelPriceTag">¥480 <span style="font-size: 12px; font-weight: 400;">/ 起</span></div>
+                    </div>
+                    <div class="hotelBody">
+                        <div class="hotelTag">五星级 · 距会场 200m</div>
+                        <h2 class="hotelName">西湖国际大酒店</h2>
+                        <p class="hotelDesc">杭州最负盛名的五星级酒店之一，提供无与伦比的西湖美景。地理位置优越，步行即可到达会议中心。</p>
+                        <button class="btnPrimaryWeb" style="width:100%" onclick="openBook('西湖国际大酒店')">立即选中并预订</button>
+                    </div>
+                </div>
+
+                <div class="hotelCard">
+                    <div class="hotelGallery">
+                        <img src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?q=80&w=800" alt="Hotel">
+                        <div class="hotelPriceTag">¥320 <span style="font-size: 12px; font-weight: 400;">/ 起</span></div>
+                    </div>
+                    <div class="hotelBody">
+                        <div class="hotelTag">高档商务 · 距会场 1.5km</div>
+                        <h2 class="hotelName">钱塘商务酒店</h2>
+                        <p class="hotelDesc">位于CBD核心区域，设施先进，环境幽静。提供定时往返会场的穿梭巴士，是商务出行的超值选择。</p>
+                        <button class="btnPrimaryWeb" style="width:100%" onclick="openBook('钱塘商务酒店')">立即选中并预订</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 预订详情面板 -->
+        <div class="bookPanel" id="bookPanel">
+            <div class="sectionTitle" id="curHotelName">预订详情</div>
+            
+            <div class="formGrid">
+                <div class="fGroup">
+                    <label class="fLabel">入住日期</label>
+                    <input type="date" class="fInput" id="ciDate" value="2026-11-09" onchange="calcTotal()">
+                </div>
+                <div class="fGroup">
+                    <label class="fLabel">离店日期</label>
+                    <input type="date" class="fInput" id="coDate" value="2026-11-12" onchange="calcTotal()">
+                </div>
+            </div>
+
+            <div class="fLabel">选择房型</div>
+            <div class="roomGrid" id="roomGrid"></div>
+
+            <div class="fLabel" style="display:flex; justify-content:space-between; align-items:center;">
+                入住人员信息
+                <button class="btnOutlineWeb" style="height:32px; padding:0 12px; font-size:12px;" onclick="addOccupant()">+ 添加人员</button>
+            </div>
+            <div class="occList" id="occList"></div>
+
+            <div class="summaryBar">
+                <div class="totalInfo">
+                    应付总额 (含增值税): <br>
+                    <span class="totalVal" id="totalPrice">¥0</span>
+                </div>
+                <button class="btnPrimaryWeb" style="height:56px; padding:0 48px; font-size:16px;" onclick="confirmBook()">提交预订订单</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="webFooter">
+        <p>© 2026 MedCon 国际临床医学大会. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const HOTEL_DATA = {
+            '西湖国际大酒店': [{n:'高级大床房', p:480}, {n:'高级双床房', p:520}, {n:'行政套房', p:1280}],
+            '钱塘商务酒店': [{n:'标准大床房', p:320}, {n:'标准双床房', p:350}]
+        };
+
+        let activeHotel = '', activeRoom = '', activePrice = 0;
+
+        function openBook(name) {
+            activeHotel = name;
+            const panel = document.getElementById('bookPanel');
+            panel.classList.add('active');
+            document.getElementById('curHotelName').textContent = `正在预订: ${name}`;
+            
+            const grid = document.getElementById('roomGrid');
+            grid.innerHTML = '';
+            HOTEL_DATA[name].forEach(r => {
+                const div = document.createElement('div');
+                div.className = 'roomItem';
+                div.onclick = () => {
+                    document.querySelectorAll('.roomItem').forEach(c => c.classList.remove('selected'));
+                    div.classList.add('selected');
+                    activeRoom = r.n; activePrice = r.p;
+                    calcTotal();
+                };
+                div.innerHTML = `<div class="rn">${r.n}</div><div class="rp">¥${r.p}</div>`;
+                grid.appendChild(div);
+            });
+            
+            if(document.getElementById('occList').children.length === 0) addOccupant();
+            panel.scrollIntoView({behavior: 'smooth'});
+            calcTotal();
+        }
+
+        function addOccupant() {
+            const row = document.createElement('div');
+            row.className = 'occRow';
+            row.innerHTML = `
+                <div class="fGroup"><input type="text" class="fInput" placeholder="入住人姓名"></div>
+                <div class="fGroup"><input type="text" class="fInput" placeholder="身份证号 / 护照号"></div>
+                <button class="btnDel" onclick="this.parentElement.remove();calcTotal()">✕</button>
+            `;
+            document.getElementById('occList').appendChild(row);
+        }
+
+        function calcTotal() {
+            if(!activePrice) return;
+            const ci = new Date(document.getElementById('ciDate').value);
+            const co = new Date(document.getElementById('coDate').value);
+            const nights = Math.max(1, Math.round((co - ci) / (1000 * 60 * 60 * 24)));
+            const total = activePrice * nights;
+            document.getElementById('totalPrice').textContent = `¥${total.toLocaleString()}`;
+        }
+
+        function confirmBook() {
+            alert(`主人，您的预订请求已提交！\n酒店：${activeHotel}\n房型：${activeRoom}\n确认邮件将发送至您的注册邮箱。`);
+            location.href = 'profile.html';
+        }
+    </script>
+</body>
+</html>
